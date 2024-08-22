@@ -1,8 +1,9 @@
-package br.com.paulo.models;
+package br.com.java1.models;
 
 import java.util.Objects;
 
 public class Cliente extends Pessoa{
+	
 	private String rg;
 
 	public String getRg() {
