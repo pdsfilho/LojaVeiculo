@@ -1,4 +1,4 @@
-package br.com.paulo.models;
+package br.com.java1.models;
 
 import java.util.Objects;
 
