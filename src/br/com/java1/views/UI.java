@@ -41,6 +41,7 @@ public class UI {
 			
 			case 5:
 				gerenciarVenda();
+				break;
 				
 			default:
 				MenuPrincipal menuPrincipal = new MenuPrincipal();
@@ -85,6 +86,8 @@ public class UI {
 			
 			case 5:
 				manutencaoVenda();
+				break;
+				
 			default:
 				MenuPrincipal menuPrincipal = new MenuPrincipal();
 				menuPrincipal.menu();
@@ -124,7 +127,7 @@ public class UI {
 			default:
 				MenuPrincipal menuPrincipal = new MenuPrincipal();
 				menuPrincipal.menu();
-				break;
+	
 		}
 	}
 	
@@ -165,7 +168,6 @@ public class UI {
 			default:
 				MenuPrincipal menuPrincipal = new MenuPrincipal();
 				menuPrincipal.menu();
-				break;
 		}
 	}
 

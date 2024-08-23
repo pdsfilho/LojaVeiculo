@@ -27,6 +27,7 @@ public class MenuPrincipal {
 				
 				case 2:
 					ui.manutencaoCadastro();
+					break;
 				
 				default:
 					menuAtivo = false;
