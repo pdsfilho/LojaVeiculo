@@ -5,8 +5,8 @@ import java.util.Objects;
 public class Loja {
 	private int id;
 	private String nome;
-	private String endereco;
 	private String telefone;
+	private Endereco endereco;
 	
 	public Loja() {}
 
@@ -26,13 +26,6 @@ public class Loja {
 		this.nome = nome;
 	}
 
-	public String getEndereco() {
-		return endereco;
-	}
-
-	public void setEndereco(String endereco) {
-		this.endereco = endereco;
-	}
 
 	public String getTelefone() {
 		return telefone;
@@ -40,6 +33,15 @@ public class Loja {
 
 	public void setTelefone(String telefone) {
 		this.telefone = telefone;
+	}
+	
+
+	public Endereco getEndereco() {
+		return endereco;
+	}
+
+	public void setEndereco(Endereco endereco) {
+		this.endereco = endereco;
 	}
 
 	@Override
@@ -59,6 +61,8 @@ public class Loja {
 		return Objects.equals(endereco, other.endereco) && id == other.id && Objects.equals(nome, other.nome)
 				&& Objects.equals(telefone, other.telefone);
 	}
+
+	
 	
 	
 }
