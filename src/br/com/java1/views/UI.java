@@ -2,13 +2,16 @@ package br.com.java1.views;
 
 import java.util.Scanner;
 
+import br.com.java1.controllers.ClienteController;
 import br.com.java1.controllers.LojaController;
+import br.com.java1.controllers.VendedorController;
 
 public class UI {
 	
 	MenuPrincipal menuPrincipal = new MenuPrincipal();
 	LojaController lojaController = new LojaController();
-	//VendedorController vendedorController = new VendedorController();
+	ClienteController clienteController = new ClienteController();
+	VendedorController vendedorController = new VendedorController();
 	//VendaController vendaController = new VendaController();
 	//VeiculoController veiculoController = new VeiculoController();
 	
@@ -134,7 +137,7 @@ public class UI {
 		
 		switch (opcaoEscolhida) {
 			case 1:
-				//vendedorController.buscar();
+				vendedorController.buscar();
 				break;
 			
 			default:
@@ -148,8 +151,8 @@ public class UI {
 		int opcaoEscolhida;
 		
 		System.out.println(
-				"\n *1- Listar Todas as Lojas. "
-				+ "\n *2- Voltar ao Menu Superior. ");
+				"\n *1- LISTAR TODOS OS CLIENTES. "
+				+ "\n *2- VOLTAR. ");
 		
 		Scanner scan = new Scanner(System.in);
 		
@@ -157,7 +160,7 @@ public class UI {
 		
 		switch (opcaoEscolhida) {
 			case 1:
-				//clienteController.buscar();
+				clienteController.consultar();
 				break;
 			
 			default:
@@ -226,10 +229,10 @@ public class UI {
 		int opcaoEscolhida;
 		int id;
 		System.out.println(
-				"\n *1- Cadastrar Loja. "
-				+ "\n *2- Excluir Loja. "
-				+ "\n *3- Alterar Dados Loja. "
-				+ "\n *4- Voltar. ");
+				"\n *1- CADASTRAR LOJA. "
+				+ "\n *2- EXCLUIR LOJA. "
+				+ "\n *3- ALTERAR DADOS DA LOJA. "
+				+ "\n *4- VOLTAR. ");
 		
 		Scanner scan = new Scanner(System.in);
 		
@@ -241,13 +244,13 @@ public class UI {
 				break;
 			
 			case 2:
-				System.out.println("Informe o ID: ");
+				System.out.println("INFORME O ID: ");
 				id = scan.nextInt();
 				lojaController.excluir(id);
 				break;
 			
 			case 3:
-				System.out.println("Informe o ID: ");
+				System.out.println("INFORME O ID: ");
 				id = scan.nextInt();
 				lojaController.alterar(id);
 				break;
@@ -257,12 +260,65 @@ public class UI {
 		}
 	}
 
-	
 	public void manutencaoVendedor() {
+		int opcaoEscolhida;
+		int id;
+		System.out.println(
+				"\n *1- CADASTRAR VENDEDOR. "
+				+ "\n *2- EXCLUIR VENDEDOR. "
+				+ "\n *3- ALTERAR DADOS DO VENDEDOR. "
+				+ "\n *4- VOLTAR. ");
 		
+		Scanner scan = new Scanner(System.in);
+		
+		opcaoEscolhida = scan.nextInt();
+		
+		switch (opcaoEscolhida) {
+			case 1:
+				clienteController.cadastrar();
+				break;
+			
+			case 2:
+				clienteController.excluir();
+				break;
+			
+			case 3:
+				clienteController.alterarDados();
+				break;
+			
+			default:
+				menuPrincipal.menu();
+		}
 	}
 	public void manutencaoCliente() {
+		int opcaoEscolhida;
+		int id;
+		System.out.println(
+				"\n *1- CADASTRAR CLIENTE. "
+				+ "\n *2- EXCLUIR CLIENTE. "
+				+ "\n *3- ALTERAR DADOS DO CLIENTE. "
+				+ "\n *4- VOLTAR. ");
 		
+		Scanner scan = new Scanner(System.in);
+		
+		opcaoEscolhida = scan.nextInt();
+		
+		switch (opcaoEscolhida) {
+			case 1:
+				clienteController.cadastrar();
+				break;
+			
+			case 2:
+				clienteController.excluir();
+				break;
+			
+			case 3:
+				clienteController.alterarDados();
+				break;
+			
+			default:
+				menuPrincipal.menu();
+		}
 	}
 	public void manutencaoVenda() {
 		

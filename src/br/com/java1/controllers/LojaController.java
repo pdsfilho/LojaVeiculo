@@ -136,8 +136,6 @@ public class LojaController {
 		catch (Exception e){
 			System.out.println("LOJA NÃO ENCONTRADA. ");
 		}
-		
-		
 	}
 	
 	public void alterar(int id) {
