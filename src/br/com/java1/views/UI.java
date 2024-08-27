@@ -5,6 +5,12 @@ import java.util.Scanner;
 import br.com.java1.controllers.LojaController;
 
 public class UI {
+	
+	MenuPrincipal menuPrincipal = new MenuPrincipal();
+	LojaController lojaController = new LojaController();
+	//VendedorController vendedorController = new VendedorController();
+	//VendaController vendaController = new VendaController();
+	
 	public void frenteLoja() {
 
 		int opcaoEscolhida;
@@ -16,7 +22,6 @@ public class UI {
 				+ "\n *3- Gerenciar Vendedor. "
 				+ "\n *4- Gerenciar Cliente."
 				+ "\n *5- Gerenciar Venda. ");
-		
 		
 		Scanner scan = new Scanner(System.in);
 		
@@ -44,11 +49,8 @@ public class UI {
 				break;
 				
 			default:
-				MenuPrincipal menuPrincipal = new MenuPrincipal();
 				menuPrincipal.menu();
 		}
-		
-		
 	}
 	
 	public void manutencaoCadastro() {
@@ -89,27 +91,60 @@ public class UI {
 				break;
 				
 			default:
-				MenuPrincipal menuPrincipal = new MenuPrincipal();
 				menuPrincipal.menu();
 		}
 		
 	}
 	
 	public void gerenciarVeiculo() {
+		int opcaoEscolhida;
+		//VeiculoController veiculoController = new VeiculoController();
 		
+		System.out.println(
+				"\n *1- CONSULTAR VEÍCULO POR PLACA. "
+				+ "\n *2- VOLTAR AO MENU ANTERIOR. ");
+		
+		Scanner scan = new Scanner(System.in);
+		
+		opcaoEscolhida = scan.nextInt();
+		
+		switch (opcaoEscolhida) {
+			case 1:
+				//veiculoController.buscar();
+				break;
+			
+			default:
+				menuPrincipal.menu();
+	
+		}
 	}
 	
 	public void gerenciarVendedor() {
+		int opcaoEscolhida;
 		
+		
+		System.out.println(
+				"\n *1- CONSULTAR VENDEDOR POR NOME. "
+				+ "\n *2- VOLTAR AO MENU ANTERIOR. ");
+		
+		Scanner scan = new Scanner(System.in);
+		
+		opcaoEscolhida = scan.nextInt();
+		
+		switch (opcaoEscolhida) {
+			case 1:
+				//vendedorController.buscar();
+				break;
+			
+			default:
+				MenuPrincipal menuPrincipal = new MenuPrincipal();
+				menuPrincipal.menu();
+	
+		}
 	}
 	
 	public void gerenciarCliente() {
-		
-	}
-	
-	public void gerenciarLoja() {
 		int opcaoEscolhida;
-		//LojaController lojaController = new LojaController();
 		
 		System.out.println(
 				"\n *1- Listar Todas as Lojas. "
@@ -121,7 +156,7 @@ public class UI {
 		
 		switch (opcaoEscolhida) {
 			case 1:
-				//lojaController.buscarLojas();
+				//clienteController.buscar();
 				break;
 			
 			default:
@@ -131,8 +166,50 @@ public class UI {
 		}
 	}
 	
-	public void gerenciarVenda() {
+	public void gerenciarLoja() {
+		int opcaoEscolhida;
 		
+		System.out.println(
+				"\n *1- Listar Todas as Lojas. "
+				+ "\n *2- Voltar ao Menu Superior. ");
+		
+		Scanner scan = new Scanner(System.in);
+		
+		opcaoEscolhida = scan.nextInt();
+		
+		switch (opcaoEscolhida) {
+			case 1:
+				lojaController.buscarTudo();
+				break;
+			
+			default:
+				menuPrincipal.menu();
+	
+		}
+	}
+	
+	public void gerenciarVenda() {
+		int opcaoEscolhida;
+		
+		
+		System.out.println(
+				"\n *1- CADASTRAR VENDA. "
+				+ "\n *2- VOLTAR AO MENU SUPERIOR. ");
+		
+		Scanner scan = new Scanner(System.in);
+		
+		opcaoEscolhida = scan.nextInt();
+		
+		switch (opcaoEscolhida) {
+			case 1:
+				//vendaController.buscarVendas();
+				break;
+			
+			default:
+				
+				menuPrincipal.menu();
+	
+		}
 	}
 	
 	public void manutencaoVeiculo() {
@@ -140,7 +217,6 @@ public class UI {
 	}
 	public void manutencaoLoja() {
 		int opcaoEscolhida;
-		//LojaController lojaController = new LojaController();
 		
 		System.out.println(
 				"\n *1- Cadastrar Loja. "
@@ -154,19 +230,18 @@ public class UI {
 		
 		switch (opcaoEscolhida) {
 			case 1:
-				//lojaController.cadastrarLoja();
+				lojaController.cadastrar();
 				break;
 			
 			case 2:
-				//lojaController.excluirLoja();
+				lojaController.excluir();
 				break;
 			
 			case 3:
-				//lojaController.alterarLoja();
+				lojaController.alterar();
 				break;
 			
 			default:
-				MenuPrincipal menuPrincipal = new MenuPrincipal();
 				menuPrincipal.menu();
 		}
 	}

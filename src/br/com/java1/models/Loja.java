@@ -10,6 +10,13 @@ public class Loja {
 	
 	public Loja() {}
 
+	public Loja(int id, String nome, String telefone, Endereco endereco) {
+		this.id = id;
+		this.nome = nome;
+		this.telefone = telefone;
+		this.endereco = endereco;
+	}
+
 	public int getId() {
 		return id;
 	}

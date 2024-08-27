@@ -7,6 +7,7 @@ public class MenuPrincipal {
 	public void menu() {
 		boolean menuAtivo = true;
 		int opcaoEscolhida;
+		UI ui = new UI();
 		
 		do {
 			System.out.println("Bem-Vindo ao Gerenciamento de Lojas Veiculares. "
@@ -15,7 +16,7 @@ public class MenuPrincipal {
 					+ "\n *2- Manutenção no Cadastro "
 					+ "\n *3- Sair ");
 			
-			UI ui = new UI();
+			
 			Scanner scan = new Scanner(System.in);
 			
 			opcaoEscolhida = scan.nextInt();
