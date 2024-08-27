@@ -10,6 +10,7 @@ public class UI {
 	LojaController lojaController = new LojaController();
 	//VendedorController vendedorController = new VendedorController();
 	//VendaController vendaController = new VendaController();
+	//VeiculoController veiculoController = new VeiculoController();
 	
 	public void frenteLoja() {
 
@@ -168,10 +169,12 @@ public class UI {
 	
 	public void gerenciarLoja() {
 		int opcaoEscolhida;
+		int id;
 		
 		System.out.println(
-				"\n *1- Listar Todas as Lojas. "
-				+ "\n *2- Voltar ao Menu Superior. ");
+				"\n *1- LISTAR TODAS AS LOJAS. "
+				+ "\n *2- BUSCAR LOJA POR ID."
+				+ "\n *3- Voltar.");
 		
 		Scanner scan = new Scanner(System.in);
 		
@@ -182,9 +185,13 @@ public class UI {
 				lojaController.buscarTudo();
 				break;
 			
+			case 2:
+				System.out.println("Informe o ID: ");
+				id = scan.nextInt();
+				lojaController.buscarPorId(id);
+			
 			default:
 				menuPrincipal.menu();
-	
 		}
 	}
 	
@@ -217,7 +224,7 @@ public class UI {
 	}
 	public void manutencaoLoja() {
 		int opcaoEscolhida;
-		
+		int id;
 		System.out.println(
 				"\n *1- Cadastrar Loja. "
 				+ "\n *2- Excluir Loja. "
@@ -234,11 +241,15 @@ public class UI {
 				break;
 			
 			case 2:
-				lojaController.excluir();
+				System.out.println("Informe o ID: ");
+				id = scan.nextInt();
+				lojaController.excluir(id);
 				break;
 			
 			case 3:
-				lojaController.alterar();
+				System.out.println("Informe o ID: ");
+				id = scan.nextInt();
+				lojaController.alterar(id);
 				break;
 			
 			default:
