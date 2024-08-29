@@ -137,7 +137,7 @@ public class UI {
 		
 		switch (opcaoEscolhida) {
 			case 1:
-				vendedorController.buscar();
+				vendedorController.consultar();
 				break;
 			
 			default:
