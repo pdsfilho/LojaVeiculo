@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class MenuPrincipal {
 	
-	public void menu() {
+	public static void menu() {
 		boolean menuAtivo = true;
 		int opcaoEscolhida;
 		UI ui = new UI();
@@ -31,6 +31,8 @@ public class MenuPrincipal {
 					break;
 				
 				default:
+					System.out.println("\n Até logo!");
+					scan.close();
 					menuAtivo = false;
 			}
 		}while(menuAtivo == true);

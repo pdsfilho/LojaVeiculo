@@ -8,7 +8,7 @@ import br.com.java1.controllers.VendedorController;
 
 public class UI {
 	
-	MenuPrincipal menuPrincipal = new MenuPrincipal();
+	
 	LojaController lojaController = new LojaController();
 	ClienteController clienteController = new ClienteController();
 	VendedorController vendedorController = new VendedorController();
@@ -53,7 +53,7 @@ public class UI {
 				break;
 				
 			default:
-				menuPrincipal.menu();
+				MenuPrincipal.menu();
 		}
 	}
 	
@@ -95,7 +95,7 @@ public class UI {
 				break;
 				
 			default:
-				menuPrincipal.menu();
+				MenuPrincipal.menu();
 		}
 		
 	}
@@ -118,7 +118,7 @@ public class UI {
 				break;
 			
 			default:
-				menuPrincipal.menu();
+				MenuPrincipal.menu();
 	
 		}
 	}
@@ -141,8 +141,7 @@ public class UI {
 				break;
 			
 			default:
-				MenuPrincipal menuPrincipal = new MenuPrincipal();
-				menuPrincipal.menu();
+				MenuPrincipal.menu();
 	
 		}
 	}
@@ -164,9 +163,8 @@ public class UI {
 				break;
 			
 			default:
-				MenuPrincipal menuPrincipal = new MenuPrincipal();
-				menuPrincipal.menu();
-	
+				
+				MenuPrincipal.menu();
 		}
 	}
 	
@@ -194,7 +192,7 @@ public class UI {
 				lojaController.buscarPorId(id);
 			
 			default:
-				menuPrincipal.menu();
+				MenuPrincipal.menu();
 		}
 	}
 	
@@ -217,7 +215,7 @@ public class UI {
 			
 			default:
 				
-				menuPrincipal.menu();
+				MenuPrincipal.menu();
 	
 		}
 	}
@@ -256,7 +254,7 @@ public class UI {
 				break;
 			
 			default:
-				menuPrincipal.menu();
+				MenuPrincipal.menu();
 		}
 	}
 
@@ -287,7 +285,7 @@ public class UI {
 				break;
 			
 			default:
-				menuPrincipal.menu();
+				MenuPrincipal.menu();
 		}
 	}
 	public void manutencaoCliente() {
@@ -317,7 +315,7 @@ public class UI {
 				break;
 			
 			default:
-				menuPrincipal.menu();
+				MenuPrincipal.menu();
 		}
 	}
 	public void manutencaoVenda() {
