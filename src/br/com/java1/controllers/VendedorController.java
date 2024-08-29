@@ -110,7 +110,7 @@ public class VendedorController {
 
 	}
 
-	public void buscar() {
+	public void consultar() {
 		Scanner sc = new Scanner(System.in);
 		System.out.print("Digite o CPF: ");
 		String cpf = sc.nextLine();
