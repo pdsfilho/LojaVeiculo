@@ -12,9 +12,9 @@ public class MenuPrincipal {
 		do {
 			System.out.println("Bem-Vindo ao Gerenciamento de Lojas Veiculares. "
 					+ "\n Escolha uma das opções abaixo: "
-					+ "\n *1- Frente da Loja "
-					+ "\n *2- Manutenção no Cadastro "
-					+ "\n *3- Sair ");
+					+ "\n *1- FRENTE DA LOJA. "
+					+ "\n *2- MANUTENÇÃO DE CADASTROS. "
+					+ "\n *3- PARA SAIR, PRESSIONE QUALQUER OUTRA TECLA. ");
 			
 			
 			Scanner scan = new Scanner(System.in);
