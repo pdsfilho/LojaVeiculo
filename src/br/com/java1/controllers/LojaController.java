@@ -12,10 +12,11 @@ import br.com.java1.utils.LojaUtils;
 public class LojaController {
 	List<Loja> lojas = new ArrayList<Loja>();
 	Loja loja = new Loja();
-
+	
 	public void cadastrar() {
-		boolean continuar = true;
 		String opcao = "S";
+		boolean aprovado = false;
+		
 		//Id da Loja começa com 1 para simular o auto incremento do SGBD.
 		int idLoja = 1;
 		
@@ -31,47 +32,112 @@ public class LojaController {
 			int idEndereco = r.nextInt(99)+1;
 			
 			//Loja
+			//ID da Loja inserido automaticamente.
 			System.out.println("ID DA NOVA LOJA: " + idLoja);
 			loja.setId(idLoja);
 			
-			System.out.println("\n INFORME O NOME DA LOJA: ");
-			String nome = scan.nextLine();
-			loja.setNome(nome);
+			while (!aprovado) {
+				System.out.println("\n INFORME O NOME DA LOJA: ");
+				String nome = scan.nextLine();
+				if (LojaUtils.validaNome(nome)) {
+					loja.setNome(nome);
+					aprovado = true;
+				} 
+			}
 			
-			System.out.println("\n INFORME O TELEFONE DA LOJA: ");
-			String telefone = scan.nextLine();
-			loja.setTelefone(telefone);
+			aprovado = false;
+			while(!aprovado) {
+				System.out.println("\n INFORME O TELEFONE DA LOJA: ");
+				String telefone = scan.nextLine();
+				
+				if (LojaUtils.validaTelefone(telefone)) {
+					loja.setTelefone(telefone);
+					aprovado = true;
+				}
+			}
 			
 			//Endereço
+			//ID do Endereço inserido automaticamente.
 			endereco.setId(idEndereco);
 			
-			System.out.println("\n INFORME EM QUAL PAÍS A LOJA SE LOCALIZA: ");
-			String pais = scan.nextLine();
-			endereco.setPais(pais);
+			aprovado = false;
+			while (!aprovado) {
+				System.out.println("\n INFORME EM QUAL PAÍS A LOJA SE LOCALIZA: ");
+				String pais = scan.nextLine();
+				
+				if(LojaUtils.validaTexto(pais)) {
+					endereco.setPais(pais);
+					aprovado = true;
+				}
+			}
 			
-			System.out.println("\n INFORME O ESTADO: ");
-			String estado = scan.nextLine();
-			endereco.setEstado(estado);
+			aprovado = false;
+			while (!aprovado) {
+				System.out.println("\n INFORME O ESTADO: ");
+				String estado = scan.nextLine();
+				
+				if(LojaUtils.validaTexto(estado)) {
+					endereco.setEstado(estado);
+					aprovado = true;
+				}
+				
+			}
 			
-			System.out.println("\n INFORME A CIDADE: ");
-			String cidade = scan.nextLine();
-			endereco.setCidade(cidade);
+			aprovado = false;
+			while (aprovado) {
+				System.out.println("\n INFORME A CIDADE: ");
+				String cidade = scan.nextLine();
+				
+				if(LojaUtils.validaTexto(cidade)) {
+					endereco.setCidade(cidade);
+					aprovado = true;
+				}
+			}
 			
-			System.out.println("\n INFORME O CEP: ");
-			String cep = scan.nextLine();
-			endereco.setCep(cep);
+			aprovado = false;
+			while(!aprovado) {
+				System.out.println("\n INFORME O CEP: ");
+				String cep = scan.nextLine();
+				
+				if(LojaUtils.validaCep(cep)) {
+					endereco.setCep(cep);
+					aprovado = true;
+				}
+			}
 			
-			System.out.println("\n INFORME O BAIRRO: ");
-			String bairro = scan.nextLine();
-			endereco.setBairro(bairro);
+			aprovado = false;
+			while (!aprovado) {
+				System.out.println("\n INFORME O BAIRRO: ");
+				String bairro = scan.nextLine();
+				
+				if(LojaUtils.validaTexto(bairro)) {
+					endereco.setBairro(bairro);
+					aprovado = true;
+				}
+			}
 			
-			System.out.println("\n INFORME A RUA: ");
-			String rua = scan.nextLine();
-			endereco.setRua(rua);
+			aprovado = false;
+			while (!aprovado) {
+				System.out.println("\n INFORME A RUA: ");
+				String rua = scan.nextLine();
+				
+				if(LojaUtils.validaTexto(rua)) {
+					endereco.setRua(rua);
+					aprovado = true;
+				}
+			}
 			
-			System.out.println("\n INFORME O NÚMERO: ");
-			int numero = scan2.nextInt();
-			endereco.setNumero(numero);
+			aprovado = false;
+			while (aprovado) {
+				System.out.println("\n INFORME O NÚMERO: ");
+				int numero = scan2.nextInt();
+				
+				if(LojaUtils.validaNumero(numero)) {
+					endereco.setNumero(numero);
+					aprovado = true;
+				}
+				
+			}
 			
 			System.out.println("\n");
 			
@@ -132,9 +198,10 @@ public class LojaController {
 		
 		try {
 			lojas.remove(buscarPorId(id));
+			System.out.println("LOJA "+ id + " DELETADA COM SUCESSO.");
 		}
 		catch (Exception e){
-			System.out.println("ERRO AO EXCLUIR LOJA. ");
+			System.out.println("ERRO AO EXCLUIR LOJA.");
 		}
 	}
 	
@@ -144,9 +211,8 @@ public class LojaController {
 			
 			Scanner scan = new Scanner(System.in);
 			
-			System.out.println("ESCOLHA UMA OPÇÃO PARA MODIFICAR: ");
+			System.out.println("ESCOLHA UMA OPÇÃO DA LOJA " + id + " PARA MODIFICAR: ");
 			
-			System.out.println("\n ID DA LOJA: " + loja.getId());
 			System.out.println("\n *1- NOME DA LOJA: " +loja.getNome());
 			System.out.println("\n *2- TELEFONE: " + loja.getTelefone());
 			System.out.println("\n *3- PAÍS: "+ loja.getEndereco().getPais());

@@ -59,4 +59,64 @@ public class LojaUtils {
 			MenuPrincipal.menu();
 		}
 	}
+	
+	public static boolean validaTelefone(String telefone) {
+		if (telefone.length() == 11 && telefone.matches("[0-9]+")) {
+			return true;
+		}
+		else {
+			System.out.println("Telefone inválido, digite novamente\n");
+			return false;
+		}
+			
+	}
+
+	public static boolean validaNome(String nome) {
+		if (nome.length() <= 50) {
+			return true;
+		}
+		else {
+			System.out.println("Nome inválido, tente novamente.");
+			return false;
+		}
+	}
+
+	public static boolean validaTexto(String texto) {
+		//texto.matches("[^a-zA-Z]+")) NÃO FUNCIONOU, TIRAR DÚVIDA COM PROF
+		
+		if (texto.length() <= 50){
+			for (int i = 0; i < texto.length(); i++) {
+	            // Verifica se o caractere específico
+	            // não é uma letra e então
+	            // return false,
+	            // else return true
+	            if (!Character
+	                .isLetter(texto.charAt(i))) {
+	            	System.out.println("Dados inválidos, tente novamente.");
+	                return false;
+	            }
+		    }
+		}
+		
+		 return true;
+	}
+
+	public static boolean validaCep(String cep) {
+		if (cep.length() == 8 && cep.matches("[0-9]+")) {
+			return true;
+		}
+		else {
+			System.out.println("CEP inválido, tente novamente.");
+			return false;
+		}
+		
+	}
+
+	public static boolean validaNumero(Integer numero) {
+		String numAux = numero.toString();
+		if (numAux.length() <= 5 && numAux.matches("[0-9]+")) {
+			return true;
+		}
+		return false;
+	}
 }
