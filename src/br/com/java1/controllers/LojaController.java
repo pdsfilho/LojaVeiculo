@@ -18,11 +18,12 @@ public class LojaController {
 	
 	public void cadastrar() {
 		String opcao = "S";
-		boolean aprovado = false;
 		
 		do {
 			Loja loja = new Loja();
 			Endereco endereco = new Endereco();
+			
+			boolean aprovado = false;
 			
 			Scanner scan = new Scanner(System.in);
 			Scanner scan2 = new Scanner(System.in);

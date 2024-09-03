@@ -142,7 +142,6 @@ public class VeiculoController {
 			System.out.println("\n ANO: " + veiculo.getAno());
 			System.out.println("\n PLACA: "+ veiculo.getPlaca());
 			System.out.println("\n PRECO: "+ veiculo.getPreco());
-			System.out.println("\n TIPO DE VEICULO: " + veiculo.getTipoVeiculo());
 			System.out.println("\n CATEGORIA: " + veiculo.getTipoVeiculo().getCategoria());
 			System.out.println("\n DESCRICAO: " + veiculo.getTipoVeiculo().getDescricao());
 			
