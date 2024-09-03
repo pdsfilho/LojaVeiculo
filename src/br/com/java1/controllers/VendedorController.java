@@ -18,21 +18,6 @@ public class VendedorController {
 		Scanner sc = new Scanner(System.in);
 
 		id++;
-//		boolean entradaValida = false;
-//		while (entradaValida == false) {
-//			try {
-//				System.out.println("ID: ");
-//				id = sc.nextInt();
-//				entradaValida = true;
-//			} catch (java.util.InputMismatchException e) {
-//				sc.nextLine();
-//				System.out.println("Digite apenas números\n");
-//			}
-//		}
-//		sc.nextLine();
-//		if (Verificadores.verificarID(id, vendedores) == true) {
-//			return;
-//		}
 		vendedor.setId(id);
 
 		System.out.println("NÚMERO DE REGISTRO");
@@ -111,55 +96,6 @@ public class VendedorController {
 		Vendedor vendedor = Verificadores.consultarNumeroRegistro(numRegistro, vendedores);
 		if (vendedor != null) {
 			MetodosDeAlteracao.alteracaoVendedor(resposta, vendedor, vendedores);
-//			while (resposta != 5) {
-//				System.out.println("1 - Nº REGISTRO\n2 - NOME\n3 - CPF\n4 - TELEFONE\n5 - SAIR\n");
-//				resposta = sc.nextInt();
-//
-//				switch (resposta) {
-//				case 1:
-//					String novoNºRegistro = MetodosDeAlteracao.alterarRG();
-//					if (Validadores.validadorDeRegistros(novoNºRegistro) == false) {
-//						break;
-//					} else if (Verificadores.verificarNumeroRegistroVendedor(novoNºRegistro, vendedores) == true) {
-//						return;
-//					} else {
-//						vendedor.setNumeroRegistro(novoNºRegistro);
-//						System.out.println("ALTERAÇÃO REALIZADA COM SUCESSO\n");
-//					}
-//					break;
-//				case 2:
-//					String novoNome = MetodosDeAlteracao.alterarNome();
-//					vendedor.setNome(novoNome);
-//					System.out.println("ALTERAÇÃO REALIZADA COM SUCESSO\n");
-//					break;
-//				case 3:
-//					String novoCPF = MetodosDeAlteracao.alterarCPF();
-//					if (Validadores.validadorCpf(novoCPF) == false) {
-//						break;
-//					} else if (Verificadores.verificarCPF(novoCPF, vendedores) == true) {
-//						break;
-//					} else {
-//						vendedor.setCpf(novoCPF);
-//						System.out.println("ALTERAÇÃO REALIZADA COM SUCESSO\n");
-//					}
-//					break;
-//				case 4:
-//					String novoTelefone = MetodosDeAlteracao.alterarTelefone();
-//					if (Validadores.validadorTelefone(novoTelefone) == false) {
-//						break;
-//					} else {
-//						vendedor.setTelefone(novoTelefone);
-//						System.out.println("ALTERAÇÃO REALIZADA COM SUCESSO\n");
-//					}
-//					break;
-//				case 5:
-//					System.out.println("Saindo...\n");
-//					break;
-//				default:
-//					System.out.println("Opção inválida, digite novamente\n");
-//					break;
-//				}
-//			}
 		}
 	}
 }
