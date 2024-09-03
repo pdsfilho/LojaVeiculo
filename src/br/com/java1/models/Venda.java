@@ -15,11 +15,12 @@ public class Venda {
 	public Venda() {}
 	
 	public Venda(int id, Veiculo veiculo, Vendedor vendedor, Cliente cliente, 
-			LocalDate data) {
+			LocalDateTime dataVenda) {
 		this.id = id;
 		this.veiculo = veiculo;
 		this.vendedor = vendedor;
 		this.cliente = cliente;
+		this.dataVenda = dataVenda;
 	}
 
 	public int getId() {

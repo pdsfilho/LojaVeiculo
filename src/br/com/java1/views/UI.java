@@ -5,6 +5,7 @@ import java.util.Scanner;
 import br.com.java1.controllers.ClienteController;
 import br.com.java1.controllers.LojaController;
 import br.com.java1.controllers.VeiculoController;
+import br.com.java1.controllers.VendaController;
 import br.com.java1.controllers.VendedorController;
 
 public class UI {
@@ -13,7 +14,7 @@ public class UI {
 	LojaController lojaController = new LojaController();
 	ClienteController clienteController = new ClienteController();
 	VendedorController vendedorController = new VendedorController();
-	//VendaController vendaController = new VendaController();
+	VendaController vendaController = new VendaController();
 	VeiculoController veiculoController = new VeiculoController();
 	
 	public void frenteLoja() {
@@ -103,7 +104,7 @@ public class UI {
 	
 	public void gerenciarVeiculo() {
 		int opcaoEscolhida;
-		
+		String placa;
 		System.out.println(
 				"\n *1- CONSULTAR VEÍCULO POR PLACA. "
 				+ "\n *2- VOLTAR AO MENU ANTERIOR. ");
@@ -114,7 +115,10 @@ public class UI {
 		
 		switch (opcaoEscolhida) {
 			case 1:
-				//veiculoController.buscar();
+				System.out.println("INFORME A PLACA: ");
+				placa = scan.nextLine();
+				
+				veiculoController.buscarPorPlaca(placa);
 				break;
 			
 			default:
@@ -128,7 +132,7 @@ public class UI {
 		
 		
 		System.out.println(
-				"\n *1- CONSULTAR VENDEDOR POR NOME. "
+				"\n *1- CONSULTAR VENDEDOR POR NÚMERO DE REGISTRO. "
 				+ "\n *2- VOLTAR AO MENU ANTERIOR. ");
 		
 		Scanner scan = new Scanner(System.in);
@@ -142,7 +146,6 @@ public class UI {
 			
 			default:
 				MenuPrincipal.menu();
-	
 		}
 	}
 	
@@ -163,7 +166,6 @@ public class UI {
 				break;
 			
 			default:
-				
 				MenuPrincipal.menu();
 		}
 	}
@@ -210,7 +212,7 @@ public class UI {
 		
 		switch (opcaoEscolhida) {
 			case 1:
-				//vendaController.buscarVendas();
+				vendaController.cadastrar();
 				break;
 			
 			default:
@@ -221,7 +223,39 @@ public class UI {
 	}
 	
 	public void manutencaoVeiculo() {
+		int opcaoEscolhida;
+		String placa;
 		
+		System.out.println(
+				"\n *1- CADASTRAR VEÍCULO. "
+				+ "\n *2- EXCLUIR VEÍCULO. "
+				+ "\n *3- ALTERAR DADOS DO VEÍCULO. "
+				+ "\n *4- VOLTAR. ");
+		
+		Scanner scan = new Scanner(System.in);
+		
+		opcaoEscolhida = scan.nextInt();
+		
+		switch (opcaoEscolhida) {
+			case 1:
+				veiculoController.cadastrar();
+				break;
+			
+			case 2:
+				System.out.println("INFORME A PLACA: ");
+				placa = scan.nextLine();
+				veiculoController.excluir(placa);
+				break;
+			
+			case 3:
+				System.out.println("INFORME A PLACA: ");
+				placa = scan.nextLine();
+				veiculoController.alterar(placa);
+				break;
+			
+			default:
+				MenuPrincipal.menu();
+		}
 	}
 	public void manutencaoLoja() {
 		int opcaoEscolhida;
@@ -319,6 +353,30 @@ public class UI {
 		}
 	}
 	public void manutencaoVenda() {
+		int opcaoEscolhida;
+		int id;
+		System.out.println(
+				"\n *1- CADASTRAR VENDA. "
+				+ "\n *2- EXCLUIR VENDA. "
+				+ "\n *3- VOLTAR. ");
 		
+		Scanner scan = new Scanner(System.in);
+		
+		opcaoEscolhida = scan.nextInt();
+		
+		switch (opcaoEscolhida) {
+			case 1:
+				vendaController.cadastrar();
+				break;
+			
+			case 2:
+				System.out.println("INFORME O ID: ");
+				id = scan.nextInt();
+				vendaController.excluir(id);
+				break;
+			
+			default:
+				MenuPrincipal.menu();
+		}
 	}
 }

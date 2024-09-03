@@ -35,10 +35,6 @@ public class VeiculoUtils {
 			veiculo.setPreco(preco);
 			break;
 			
-//		case 6:
-//			String tipoVeiculo = scan.nextLine();
-//			veiculo.setTipoVeiculo(tipoVeiculo);
-//			
 		case 6:
 			String categoria = scan.nextLine();
 			veiculo.getTipoVeiculo().setCategoria(categoria);

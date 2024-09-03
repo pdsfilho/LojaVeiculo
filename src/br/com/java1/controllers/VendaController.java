@@ -9,7 +9,6 @@ import br.com.java1.models.Cliente;
 import br.com.java1.models.Veiculo;
 import br.com.java1.models.Venda;
 import br.com.java1.models.Vendedor;
-import br.com.java1.utils.LojaUtils;
 import br.com.java1.utils.Verificadores;
 
 public class VendaController {
@@ -21,6 +20,9 @@ public class VendaController {
 	Venda venda = new Venda();
 	Cliente cliente = new Cliente();
 	Vendedor vendedor = new Vendedor();
+	Veiculo veiculo = new Veiculo();
+	
+	VeiculoController veiculoController = new VeiculoController();
 	
 	//Id da Venda começa com 1 para simular o auto incremento do SGBD.
 	int idVenda = 1;
@@ -54,6 +56,18 @@ public class VendaController {
 			
 			aprovado = false;
 			while (!aprovado) {
+				System.out.println("\n INFORME A PLACA DO VEICULO: ");
+				String placa = scan.nextLine();
+				veiculo = veiculoController.buscarPorPlaca(placa);
+				
+				if (cliente != null) {
+					venda.setVeiculo(veiculo);
+					aprovado = true;
+				} 
+			}
+			
+			aprovado = false;
+			while (!aprovado) {
 				System.out.println("\n INFORME O RG DO CLIENTE: ");
 				String rg = scan.nextLine();
 				cliente = Verificadores.consultarRG(rg, clientes);
@@ -66,8 +80,8 @@ public class VendaController {
 			
 			System.out.println("\n");
 				
-			/*vendas.add(new Venda(venda.getId(), venda.getVeiculo(), venda.getVendedor(),
-					venda.getCliente(), venda.getDataVenda());*/
+			vendas.add(new Venda(venda.getId(), venda.getVeiculo(), venda.getVendedor(),
+					venda.getCliente(), venda.getDataVenda()));
 			idVenda ++;
 			
 			System.out.println("\n DESEJA ADICIONAR OUTRA VENDA (S/N)? ");
