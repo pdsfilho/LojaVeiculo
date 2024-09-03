@@ -7,16 +7,16 @@ import br.com.java1.models.Pessoa;
 import br.com.java1.models.Vendedor;
 
 public class Verificadores {
-	public static <T> boolean verificarID(int id, List<T> list) {
-
-		for (T xT : list) {
-			if (id == ((Pessoa) xT).getId()) {
-				System.out.println("\nID já cadastrado, tente novamente\n");
-				return true;
-			}
-		}
-		return false;
-	}
+//	public static <T> boolean verificarID(int id, List<T> list) {
+//
+//		for (T xT : list) {
+//			if (id == ((Pessoa) xT).getId()) {
+//				System.out.println("\nID já cadastrado, tente novamente\n");
+//				return true;
+//			}
+//		}
+//		return false;
+//	}
 
 	public static <T> boolean verificarCPF(String cpf, List<T> list) {
 
@@ -40,7 +40,7 @@ public class Verificadores {
 		return false;
 	}
 	
-	public static boolean verificarNºRegistroVendedor(String numRegistro, List<Vendedor> list) {
+	public static boolean verificarNumeroRegistroVendedor(String numRegistro, List<Vendedor> list) {
 
 		for (Vendedor xVendedor : list) {
 			if (numRegistro.equals(xVendedor.getNumeroRegistro())) {

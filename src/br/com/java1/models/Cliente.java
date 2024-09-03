@@ -6,6 +6,15 @@ public class Cliente extends Pessoa{
 	
 	private String rg;
 
+	public Cliente(int id, String nome, String cpf, String telefone, String rg) {
+		super(id, nome, cpf, telefone);
+		this.rg = rg;
+	}
+
+	public Cliente() {
+		super();
+	}
+
 	public String getRg() {
 		return rg;
 	}

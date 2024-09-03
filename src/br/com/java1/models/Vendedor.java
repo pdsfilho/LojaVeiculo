@@ -6,6 +6,11 @@ public class Vendedor extends Pessoa {
 	
 	private String numeroRegistro;
 	
+	public Vendedor(int id, String nome, String cpf, String telefone, String numeroRegistro) {
+		super(id, nome, cpf, telefone);
+		this.numeroRegistro = numeroRegistro;
+	}
+
 	public Vendedor() {}
 
 	public String getNumeroRegistro() {
