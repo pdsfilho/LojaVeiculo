@@ -12,6 +12,8 @@ public class VeiculoController {
 	List<Veiculo> veiculos = new ArrayList<Veiculo>();
 	Veiculo veiculo = new Veiculo();
 	
+	int idVeiculo = 1;
+	
 	public void cadastrar() {
 		
 		boolean continuar = true;
@@ -23,7 +25,7 @@ public class VeiculoController {
 			Scanner scan = new Scanner(System.in);
 		
 			Random r = new Random();
-			int idVeiculo = r.nextInt(99)+1;
+			int idTipoVeiculo = r.nextInt(99)+1;
 			
 			System.out.println("ID: " + idVeiculo);
 			veiculo.setId(idVeiculo);
@@ -48,12 +50,8 @@ public class VeiculoController {
 			double preco = scan.nextDouble();
 			veiculo.setPreco(preco);
 			
-			System.out.println("\n INFORME O TIPO DE VEICULO: ");
-			String tipoVeiculo = scan.nextLine();
-			veiculo.setTipoVeiculo(tipoveiculo);
 			
-			System.out.println("\n INFORME O ID DO TIPO DE VEÍCULO: ");
-			int idTipoVeiculo = scan.nextInt();
+			
 			tipoveiculo.setId(idTipoVeiculo);
 			
 			System.out.println("\n INFORME A CATEGORIA DO VEICULO: ");
@@ -66,7 +64,8 @@ public class VeiculoController {
 			
 			System.out.println("\n");
 			
-			veiculos.add(new Veiculo(idTipoVeiculo, marca, modelo, ano, placa, preco, new TipoVeiculo(idTipoVeiculo, categoria, descricao)));
+			veiculos.add(new Veiculo(idTipoVeiculo, marca, modelo, ano, placa, preco,
+					new TipoVeiculo(idTipoVeiculo, categoria, descricao)));
 			idVeiculo ++;
 			
 			System.out.println("\n DESEJA ADICIONAR OUTRO VEICULO (S/N)? ");
