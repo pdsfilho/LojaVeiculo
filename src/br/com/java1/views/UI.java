@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 import br.com.java1.controllers.ClienteController;
 import br.com.java1.controllers.LojaController;
+import br.com.java1.controllers.VeiculoController;
 import br.com.java1.controllers.VendedorController;
 
 public class UI {
@@ -13,7 +14,7 @@ public class UI {
 	ClienteController clienteController = new ClienteController();
 	VendedorController vendedorController = new VendedorController();
 	//VendaController vendaController = new VendaController();
-	//VeiculoController veiculoController = new VeiculoController();
+	VeiculoController veiculoController = new VeiculoController();
 	
 	public void frenteLoja() {
 
@@ -102,7 +103,6 @@ public class UI {
 	
 	public void gerenciarVeiculo() {
 		int opcaoEscolhida;
-		//VeiculoController veiculoController = new VeiculoController();
 		
 		System.out.println(
 				"\n *1- CONSULTAR VEÍCULO POR PLACA. "

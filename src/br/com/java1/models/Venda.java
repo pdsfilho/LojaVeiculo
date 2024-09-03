@@ -1,6 +1,7 @@
 package br.com.java1.models;
 
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Objects;
 
 public class Venda {
@@ -9,9 +10,17 @@ public class Venda {
 	private Veiculo veiculo;
 	private Vendedor vendedor;
 	private Cliente cliente;
-	private Date dataVenda;
+	private LocalDateTime dataVenda;
 	
 	public Venda() {}
+	
+	public Venda(int id, Veiculo veiculo, Vendedor vendedor, Cliente cliente, 
+			LocalDate data) {
+		this.id = id;
+		this.veiculo = veiculo;
+		this.vendedor = vendedor;
+		this.cliente = cliente;
+	}
 
 	public int getId() {
 		return id;
@@ -45,11 +54,11 @@ public class Venda {
 		this.cliente = cliente;
 	}
 
-	public Date getDataVenda() {
+	public LocalDateTime getDataVenda() {
 		return dataVenda;
 	}
 
-	public void setDataVenda(Date dataVenda) {
+	public void setDataVenda(LocalDateTime dataVenda) {
 		this.dataVenda = dataVenda;
 	}
 
@@ -70,6 +79,5 @@ public class Venda {
 		return Objects.equals(cliente, other.cliente) && Objects.equals(dataVenda, other.dataVenda) && id == other.id
 				&& Objects.equals(veiculo, other.veiculo) && Objects.equals(vendedor, other.vendedor);
 	}
-	
 	
 }
