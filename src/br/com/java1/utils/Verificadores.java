@@ -7,15 +7,23 @@ import br.com.java1.models.Pessoa;
 import br.com.java1.models.Vendedor;
 
 public class Verificadores {
-	public static <T> boolean verificarID(int id, List<T> list) {
 
-		for (T xT : list) {
-			if (id == ((Pessoa) xT).getId()) {
-				System.out.println("\nID já cadastrado, tente novamente\n");
-				return true;
-			}
+	public static void mostrarTudoCliente(List<Cliente> list) {
+		System.out.println("DADOS CADASTRADOS\n");
+		
+		for (Cliente x : list) {
+			System.out.println("\nID: " + x.getId() + "\nRG: " + x.getRg() + "\nNOME: " + x.getNome() + "\nCPF: "
+					+ x.getCpf() + "\nTELEFONE: " + x.getTelefone() + "\n");
 		}
-		return false;
+	}
+	
+	public static void mostrarTudoVendedor(List<Vendedor> list) {
+		System.out.println("DADOS CADASTRADOS\n");
+		
+		for (Vendedor x : list) {
+			System.out.println("\nID: " + x.getId() + "\nNÚMERO DE REGISTRO: " + x.getNumeroRegistro() + "\nNOME: " + x.getNome() + "\nCPF: "
+					+ x.getCpf() + "\nTELEFONE: " + x.getTelefone() + "\n");
+		}
 	}
 
 	public static <T> boolean verificarCPF(String cpf, List<T> list) {
@@ -28,7 +36,7 @@ public class Verificadores {
 		}
 		return false;
 	}
-	
+
 	public static boolean verificarRGcliente(String rg, List<Cliente> list) {
 
 		for (Cliente xCliente : list) {
@@ -39,8 +47,8 @@ public class Verificadores {
 		}
 		return false;
 	}
-	
-	public static boolean verificarNºRegistroVendedor(String numRegistro, List<Vendedor> list) {
+
+	public static boolean verificarNumeroRegistroVendedor(String numRegistro, List<Vendedor> list) {
 
 		for (Vendedor xVendedor : list) {
 			if (numRegistro.equals(xVendedor.getNumeroRegistro())) {
@@ -50,7 +58,6 @@ public class Verificadores {
 		}
 		return false;
 	}
-
 
 	public static Cliente consultarRG(String rg, List<Cliente> list) {
 		for (Cliente xCliente : list) {
@@ -65,13 +72,13 @@ public class Verificadores {
 		System.out.println("\nNENHUM CLIENTE ENCONTRADO\n");
 		return null;
 	}
-	
+
 	public static Vendedor consultarNumeroRegistro(String numRegistro, List<Vendedor> list) {
 		for (Vendedor xVendedor : list) {
 			if (numRegistro.equals(xVendedor.getNumeroRegistro())) {
 				System.out.println("\nDADOS\n" + "\nID: " + xVendedor.getId() + "\nNOME: " + xVendedor.getNome()
-						+ "\nNÚMERO DE REGISTRO: " + xVendedor.getNumeroRegistro() + "\nCPF: " + xVendedor.getCpf() + "\nTELEFONE: "
-						+ xVendedor.getTelefone());
+						+ "\nNÚMERO DE REGISTRO: " + xVendedor.getNumeroRegistro() + "\nCPF: " + xVendedor.getCpf()
+						+ "\nTELEFONE: " + xVendedor.getTelefone());
 				System.out.println("________________________________\n");
 				return xVendedor;
 			}
