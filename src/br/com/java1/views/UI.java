@@ -112,10 +112,12 @@ public class UI {
 		Scanner scan = new Scanner(System.in);
 		
 		opcaoEscolhida = scan.nextInt();
+		scan.nextLine();
 		
 		switch (opcaoEscolhida) {
 			case 1:
 				System.out.println("INFORME A PLACA: ");
+				
 				placa = scan.nextLine();
 				
 				veiculoController.buscarPorPlaca(placa);
@@ -307,15 +309,15 @@ public class UI {
 		
 		switch (opcaoEscolhida) {
 			case 1:
-				clienteController.cadastrar();
+				vendedorController.cadastrar();
 				break;
 			
 			case 2:
-				clienteController.excluir();
+				vendedorController.excluir();
 				break;
 			
 			case 3:
-				clienteController.alterarDados();
+				vendedorController.alterarDados();
 				break;
 			
 			default:
