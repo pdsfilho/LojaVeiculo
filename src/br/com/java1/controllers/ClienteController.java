@@ -11,13 +11,11 @@ import br.com.java1.utils.Verificadores;
 
 public class ClienteController {
 	List<Cliente> clientes = new ArrayList<Cliente>();
-	int id = 0;
+	int id = 1;
 
 	public void cadastrar() {
 		Cliente cliente = new Cliente();
 		Scanner sc = new Scanner(System.in);
-
-		id++;
 		cliente.setId(id);
 
 		System.out.println("RG");
@@ -56,6 +54,7 @@ public class ClienteController {
 
 		clientes.add(new Cliente(id, nome, cpf, telefone, rg));
 		System.out.println("\nCadastro realizado\n");
+		id++;
 	}
 
 	public void excluir() {
@@ -78,6 +77,10 @@ public class ClienteController {
 			System.out.println("\nVoltando ao menu principal\n");
 			return;
 		}
+	}
+	
+	public void mostrarTudo() {
+		Verificadores.mostrarTudoCliente(clientes);
 	}
 
 	public void consultar() {

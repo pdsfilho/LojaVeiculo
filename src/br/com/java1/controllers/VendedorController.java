@@ -17,7 +17,6 @@ public class VendedorController {
 		Vendedor vendedor = new Vendedor();
 		Scanner sc = new Scanner(System.in);
 
-		id++;
 		vendedor.setId(id);
 
 		System.out.println("NÚMERO DE REGISTRO");
@@ -54,6 +53,7 @@ public class VendedorController {
 
 		vendedores.add(new Vendedor(id, nome, cpf, telefone, numRegistro));
 		System.out.println("\nCadastro realizado\n");
+		id++;
 	}
 
 	public void excluir() {
@@ -77,6 +77,10 @@ public class VendedorController {
 			System.out.println("\nVoltando ao menu principal\n");
 			return;
 		}
+	}
+	
+	public void mostrarTudo() {
+		Verificadores.mostrarTudoVendedor(vendedores);
 	}
 
 	public void consultar() {
