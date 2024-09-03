@@ -7,6 +7,15 @@ public class TipoVeiculo {
 	private String categoria;
 	private String descricao;
 	
+	
+	
+	public TipoVeiculo(int id, String categoria, String descricao) {
+		super();
+		this.id = id;
+		this.categoria = categoria;
+		this.descricao = descricao;
+	}
+
 	public TipoVeiculo() {}
 
 	public int getId() {

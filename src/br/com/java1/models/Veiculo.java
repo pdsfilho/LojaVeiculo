@@ -11,6 +11,19 @@ public class Veiculo {
 	private double preco;
 	private TipoVeiculo tipoVeiculo;
 	
+	
+	
+	public Veiculo(int id, String marca, String modelo, int ano, String placa, double preco, TipoVeiculo tipoVeiculo) {
+		super();
+		this.id = id;
+		this.marca = marca;
+		this.modelo = modelo;
+		this.ano = ano;
+		this.placa = placa;
+		this.preco = preco;
+		this.tipoVeiculo = tipoVeiculo;
+	}
+
 	public Veiculo() {}
 
 	public int getId() {
