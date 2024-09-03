@@ -13,12 +13,12 @@ public class LojaController {
 	List<Loja> lojas = new ArrayList<Loja>();
 	Loja loja = new Loja();
 	
+	//Id da Loja começa com 1 para simular o auto incremento do SGBD.
+	int idLoja = 1;
+	
 	public void cadastrar() {
 		String opcao = "S";
 		boolean aprovado = false;
-		
-		//Id da Loja começa com 1 para simular o auto incremento do SGBD.
-		int idLoja = 1;
 		
 		do {
 			Loja loja = new Loja();
@@ -79,12 +79,11 @@ public class LojaController {
 				if(LojaUtils.validaTexto(estado)) {
 					endereco.setEstado(estado);
 					aprovado = true;
-				}
-				
+				}		
 			}
 			
 			aprovado = false;
-			while (aprovado) {
+			while (!aprovado) {
 				System.out.println("\n INFORME A CIDADE: ");
 				String cidade = scan.nextLine();
 				
@@ -128,7 +127,7 @@ public class LojaController {
 			}
 			
 			aprovado = false;
-			while (aprovado) {
+			while (!aprovado) {
 				System.out.println("\n INFORME O NÚMERO: ");
 				int numero = scan2.nextInt();
 				

@@ -22,7 +22,9 @@ public class VeiculoController {
 		do {
 			Veiculo veiculo = new Veiculo();
 			TipoVeiculo tipoveiculo = new TipoVeiculo();
+			
 			Scanner scan = new Scanner(System.in);
+			Scanner scan2 = new Scanner(System.in);
 		
 			Random r = new Random();
 			int idTipoVeiculo = r.nextInt(99)+1;
@@ -39,7 +41,7 @@ public class VeiculoController {
 			veiculo.setModelo(modelo);
 			
 			System.out.println("\n INFORME O ANO DO VEÍCULO: ");
-			int ano = scan.nextInt();
+			int ano = scan2.nextInt();
 			veiculo.setAno(ano);
 			
 			System.out.println("\n A PLACA DO VEÍCULO: ");
@@ -47,7 +49,7 @@ public class VeiculoController {
 			veiculo.setPlaca(placa);
 			
 			System.out.println("\n INFORME O PREÇO DO VEICULO: ");
-			double preco = scan.nextDouble();
+			double preco = scan2.nextDouble();
 			veiculo.setPreco(preco);
 			
 			
@@ -90,10 +92,10 @@ public class VeiculoController {
 		}
 	}
 	
-	public Veiculo buscarPorId(int id) {
+	public Veiculo buscarPorPlaca(String placa) {
 
 		for(Veiculo l : veiculos) {
-			if (id == l.getId()) {
+			if (placa.equals(l.getPlaca())) {
 				System.out.println("\n ID DO VEICULO: " + l.getId());
 				System.out.println("\n MARCA: " +l.getMarca());
 				System.out.println("\n MODELO: " + l.getModelo());
@@ -112,23 +114,23 @@ public class VeiculoController {
 		return null;
 	}
 	
-	public void excluir(int id) {
+	public void excluir(String placa) {
 		
 		try {
-			veiculos.remove(buscarPorId(id));
+			veiculos.remove(buscarPorPlaca(placa));
 		}
 		catch (Exception e){
 			System.out.println("ERRO AO EXCLUIR VEICULO. ");
 		}
 	}
 	
-	public void alterar(int id) {
+	public void alterar(String placa) {
 		try {
 			
 			//NÃO ENTENDI AINDA MUITO BEM A VARIAVEL VAR MAS DEIXEI PQ SE FUNCIONOU NO LOJA DEVE FUNCIONAR NO VEICULO
 
 
-			var veiculo = buscarPorId(id);
+			var veiculo = buscarPorPlaca(placa);
 			
 			Scanner scan = new Scanner(System.in);
 			
@@ -153,7 +155,7 @@ public class VeiculoController {
 			int opcao = scan.nextInt();
 			//VeiculoUtils.opcoesVeiculo(veiculo, opcao);
 			
-			buscarPorId(id);
+			buscarPorPlaca(placa);
 		}
 		catch (Exception e){
 			System.out.println("ERRO AO ALTERAR VEICULO. ");
