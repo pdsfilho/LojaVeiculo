@@ -82,23 +82,21 @@ public class LojaUtils {
 	}
 
 	public static boolean validaTexto(String texto) {
-		//texto.matches("[^a-zA-Z]+")) NÃO FUNCIONOU, TIRAR DÚVIDA COM PROF
 		
-		if (texto.length() <= 50){
-			for (int i = 0; i < texto.length(); i++) {
-	            // Verifica se o caractere específico
-	            // não é uma letra e então
-	            // return false,
-	            // else return true
-	            if (!Character
-	                .isLetter(texto.charAt(i))) {
-	            	System.out.println("Dados inválidos, tente novamente.");
-	                return false;
+		if (texto.length() <= 50 && texto.matches("[a-zA-Z\\s]+") == true){
+			return true;
+//			for (int i = 0; i < texto.length(); i++) {
+//	            // Verifica se o caractere específico
+//	            // não é uma letra e então
+//	            // return false,
+//	            // else return true
+//	            if (!Character
+//	                .isLetter(texto.charAt(i))) {
+//	            	System.out.println("Dados inválidos, tente novamente.");
+//	                return false;
 	            }
-		    }
-		}
-		
-		 return true;
+		System.out.println("Dados inválidos, tente novamente.");
+		return false;
 	}
 
 	public static boolean validaCep(String cep) {
