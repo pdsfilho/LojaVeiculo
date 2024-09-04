@@ -10,8 +10,16 @@ import br.com.java1.utils.Validadores;
 import br.com.java1.utils.Verificadores;
 
 public class VendedorController {
-	List<Vendedor> vendedores = new ArrayList<Vendedor>();
-	int id = 1;
+	private List<Vendedor> vendedores = new ArrayList<Vendedor>();
+	private int id = 1;
+
+	public List<Vendedor> getVendedores() {
+		return vendedores;
+	}
+
+	public void setVendedores(List<Vendedor> vendedores) {
+		this.vendedores = vendedores;
+	}
 
 	public void cadastrar() {
 		Vendedor vendedor = new Vendedor();
