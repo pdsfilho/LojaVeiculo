@@ -7,7 +7,8 @@ import br.com.java1.models.Pessoa;
 import br.com.java1.models.Vendedor;
 
 public class Verificadores {
-
+	
+	//Exibe a lista de todos os clientes cadastrados
 	public static void mostrarTudoCliente(List<Cliente> list) {
 		System.out.println("DADOS CADASTRADOS\n");
 		
@@ -16,7 +17,7 @@ public class Verificadores {
 					+ x.getCpf() + "\nTELEFONE: " + x.getTelefone() + "\n");
 		}
 	}
-	
+	//Exibe a lista de todos os vendedores cadastrados
 	public static void mostrarTudoVendedor(List<Vendedor> list) {
 		System.out.println("DADOS CADASTRADOS\n");
 		
@@ -25,7 +26,7 @@ public class Verificadores {
 					+ x.getCpf() + "\nTELEFONE: " + x.getTelefone() + "\n");
 		}
 	}
-
+	//Método genérico utilizado nas classes cliente e vendedor para impedir duplicidade de CPFs
 	public static <T> boolean verificarCPF(String cpf, List<T> list) {
 
 		for (T xT : list) {
@@ -36,7 +37,7 @@ public class Verificadores {
 		}
 		return false;
 	}
-
+	//Método que verifica se ja existe um RG igual cadastrado
 	public static boolean verificarRGcliente(String rg, List<Cliente> list) {
 
 		for (Cliente xCliente : list) {
@@ -47,7 +48,7 @@ public class Verificadores {
 		}
 		return false;
 	}
-
+	//Método que verifica se ja existe um Número de registro igual cadastrado
 	public static boolean verificarNumeroRegistroVendedor(String numRegistro, List<Vendedor> list) {
 
 		for (Vendedor xVendedor : list) {
@@ -58,7 +59,7 @@ public class Verificadores {
 		}
 		return false;
 	}
-
+	//Consulta um cliente na lista e retorna esse cliente
 	public static Cliente consultarRG(String rg, List<Cliente> list) {
 		for (Cliente xCliente : list) {
 			if (rg.equals(xCliente.getRg())) {
@@ -72,7 +73,7 @@ public class Verificadores {
 		System.out.println("\nNENHUM CLIENTE ENCONTRADO\n");
 		return null;
 	}
-
+	//Consulta um vendedor na lista e retorna esse cliente
 	public static Vendedor consultarNumeroRegistro(String numRegistro, List<Vendedor> list) {
 		for (Vendedor xVendedor : list) {
 			if (numRegistro.equals(xVendedor.getNumeroRegistro())) {

@@ -10,8 +10,16 @@ import br.com.java1.utils.Validadores;
 import br.com.java1.utils.Verificadores;
 
 public class ClienteController {
-	List<Cliente> clientes = new ArrayList<Cliente>();
-	int id = 1;
+	private List<Cliente> clientes = new ArrayList<Cliente>();
+	private int id = 1;
+
+	public List<Cliente> getClientes() {
+		return clientes;
+	}
+
+	public void setClientes(List<Cliente> clientes) {
+		this.clientes = clientes;
+	}
 
 	public void cadastrar() {
 		Cliente cliente = new Cliente();
@@ -20,11 +28,12 @@ public class ClienteController {
 
 		System.out.println("RG");
 		String rg = sc.nextLine();
+		//Método que verifica se o preenchimento do RG não contém letras
 		while (Validadores.validadorDeRegistros(rg) == false) {
 			System.out.println("RG");
 			rg = sc.nextLine();
 		}
-
+		//Método que verifica se ja existe um RG igual cadastrado
 		if (Verificadores.verificarRGcliente(rg, clientes)) {
 			return;
 		}
@@ -36,10 +45,11 @@ public class ClienteController {
 
 		System.out.print("CPF: ");
 		String cpf = sc.nextLine();
+		//Método para verificar se o CPF tem 11 digitos e não contém letras
 		while (Validadores.validadorCpf(cpf) == false) {
 			cpf = sc.nextLine();
 		}
-
+		//Método que verifica se já existe um CPF igual cadastrado
 		if (Verificadores.verificarCPF(cpf, clientes) == true) {
 			return;
 		}
@@ -47,6 +57,7 @@ public class ClienteController {
 
 		System.out.print("TELEFONE: ");
 		String telefone = sc.nextLine();
+		//Método para verificar se o telefone tem 11 digitos e não contém letras
 		while (Validadores.validadorTelefone(telefone) == false) {
 			telefone = sc.nextLine();
 		}
@@ -54,6 +65,7 @@ public class ClienteController {
 
 		clientes.add(new Cliente(id, nome, cpf, telefone, rg));
 		System.out.println("\nCadastro realizado\n");
+		//Utilização de auto incremento para o ID
 		id++;
 	}
 
@@ -61,6 +73,7 @@ public class ClienteController {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Digite o RG do cliente");
 		String rg = sc.nextLine();
+		//Consulta um cliente na lista e retorna esse cliente
 		Cliente cliente = Verificadores.consultarRG(rg, clientes);
 		if (cliente != null) {
 			System.out.println("\nDigite 'S' para excluir ou 'N' para cancelar\n");
@@ -80,6 +93,7 @@ public class ClienteController {
 	}
 	
 	public void mostrarTudo() {
+		//Exibe a lista de todos os clientes cadastrados
 		Verificadores.mostrarTudoCliente(clientes);
 	}
 
