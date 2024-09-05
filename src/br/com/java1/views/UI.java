@@ -211,6 +211,7 @@ public class UI {
 		Scanner scan = new Scanner(System.in);
 		
 		opcaoEscolhida = scan.nextInt();
+		scan.nextLine();
 		
 		switch (opcaoEscolhida) {
 			case 1:
