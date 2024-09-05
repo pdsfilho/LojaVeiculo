@@ -13,10 +13,6 @@ import br.com.java1.utils.Verificadores;
 
 public class VendaController {
 	List<Venda> vendas = new ArrayList<Venda>();
-	/*
-	List<Vendedor> vendedores = new ArrayList<Vendedor>();
-	List<Cliente> clientes = new ArrayList<Cliente>();
-	List<Veiculo> veiculos = new ArrayList<Veiculo>(); */
 	
 	Venda venda = new Venda();
 	Cliente cliente = new Cliente();
@@ -61,12 +57,10 @@ public class VendaController {
 				System.out.println("\n DATA/HORA: " + v.getDataVenda());
 				
 				System.out.println("________________________________\n");
-				
-				System.out.println("________________________________\n");
 				return v;
 			}
 		}
-		System.out.println("LOJA NÃO ENCONTRADA.");
+		System.out.println("VENDA NÃO ENCONTRADA.");
 		return null;
 	}
 	
@@ -74,10 +68,10 @@ public class VendaController {
 		
 		try {
 			vendas.remove(buscarPorId(id));
-			System.out.println("LOJA "+ id + " DELETADA COM SUCESSO.");
+			System.out.println("VENDA "+ id + " DELETADA COM SUCESSO.");
 		}
 		catch (Exception e){
-			System.out.println("ERRO AO EXCLUIR LOJA.");
+			System.out.println("ERRO AO EXCLUIR VENDA.");
 		}
 	}
 }
