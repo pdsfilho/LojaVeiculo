@@ -50,7 +50,35 @@ public class VeiculoUtils {
 			MenuPrincipal.menu();
 		}
 	}
+
+	public static boolean validaMarca (String marca) {
+		if (marca.length() <=20 && marca.matches("[a -zA-Z\\s]+")== true) {
+			return true;
+		}
+		else {
+			System.out.println("MARCA INVÁLIDA, DIGITE NOVAMENTE \n");
+			return false;
+		}
+		}
+	public static boolean validaModelo (String modelo) {
+		if (modelo.length() <=20 && modelo.matches("[a -zA-Z\\s]+")== true) {
+			return true;
+		}
+		else {
+			System.out.println("MODELO INVÁLIDO, DIGITE NOVAMENTE \n");
+			return false;
 }
+ 
+	public static 	
+	
+	
+	}
+	}
+
+
+
+
+
 
 
 
