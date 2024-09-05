@@ -8,24 +8,6 @@ import br.com.java1.models.Vendedor;
 
 public class Verificadores {
 	
-	//Exibe a lista de todos os clientes cadastrados
-	public static void mostrarTudoCliente(List<Cliente> list) {
-		System.out.println("DADOS CADASTRADOS\n");
-		
-		for (Cliente x : list) {
-			System.out.println("\nID: " + x.getId() + "\nRG: " + x.getRg() + "\nNOME: " + x.getNome() + "\nCPF: "
-					+ x.getCpf() + "\nTELEFONE: " + x.getTelefone() + "\n");
-		}
-	}
-	//Exibe a lista de todos os vendedores cadastrados
-	public static void mostrarTudoVendedor(List<Vendedor> list) {
-		System.out.println("DADOS CADASTRADOS\n");
-		
-		for (Vendedor x : list) {
-			System.out.println("\nID: " + x.getId() + "\nNÚMERO DE REGISTRO: " + x.getNumeroRegistro() + "\nNOME: " + x.getNome() + "\nCPF: "
-					+ x.getCpf() + "\nTELEFONE: " + x.getTelefone() + "\n");
-		}
-	}
 	//Método genérico utilizado nas classes cliente e vendedor para impedir duplicidade de CPFs
 	public static <T> boolean verificarCPF(String cpf, List<T> list) {
 
@@ -58,33 +40,5 @@ public class Verificadores {
 			}
 		}
 		return false;
-	}
-	//Consulta um cliente na lista e retorna esse cliente
-	public static Cliente consultarRG(String rg, List<Cliente> list) {
-		for (Cliente xCliente : list) {
-			if (rg.equals(xCliente.getRg())) {
-				System.out.println("\nDADOS\n" + "\nID: " + xCliente.getId() + "\nNOME: " + xCliente.getNome()
-						+ "\nRG: " + xCliente.getRg() + "\nCPF: " + xCliente.getCpf() + "\nTELEFONE: "
-						+ xCliente.getTelefone());
-				System.out.println("________________________________\n");
-				return xCliente;
-			}
-		}
-		System.out.println("\nNENHUM CLIENTE ENCONTRADO\n");
-		return null;
-	}
-	//Consulta um vendedor na lista e retorna esse cliente
-	public static Vendedor consultarNumeroRegistro(String numRegistro, List<Vendedor> list) {
-		for (Vendedor xVendedor : list) {
-			if (numRegistro.equals(xVendedor.getNumeroRegistro())) {
-				System.out.println("\nDADOS\n" + "\nID: " + xVendedor.getId() + "\nNOME: " + xVendedor.getNome()
-						+ "\nNÚMERO DE REGISTRO: " + xVendedor.getNumeroRegistro() + "\nCPF: " + xVendedor.getCpf()
-						+ "\nTELEFONE: " + xVendedor.getTelefone());
-				System.out.println("________________________________\n");
-				return xVendedor;
-			}
-		}
-		System.out.println("\nNENHUM VENDEDOR ENCONTRADO\n");
-		return null;
 	}
 }

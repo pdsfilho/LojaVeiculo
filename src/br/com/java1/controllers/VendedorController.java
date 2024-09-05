@@ -10,16 +10,8 @@ import br.com.java1.utils.Validadores;
 import br.com.java1.utils.Verificadores;
 
 public class VendedorController {
-	private List<Vendedor> vendedores = new ArrayList<Vendedor>();
+	List<Vendedor> vendedores = new ArrayList<Vendedor>();
 	private int id = 1;
-
-	public List<Vendedor> getVendedores() {
-		return vendedores;
-	}
-
-	public void setVendedores(List<Vendedor> vendedores) {
-		this.vendedores = vendedores;
-	}
 
 	public void cadastrar() {
 		Vendedor vendedor = new Vendedor();
@@ -29,12 +21,13 @@ public class VendedorController {
 
 		System.out.println("NÚMERO DE REGISTRO");
 		String numRegistro = sc.nextLine();
-		//Método que verifica se o preenchimento do Número de registro não contém letras
+		// Método que verifica se o preenchimento do Número de registro não contém
+		// letras
 		while (Validadores.validadorDeRegistros(numRegistro) == false) {
 			System.out.println("NÚMERO DE REGISTRO");
 			numRegistro = sc.nextLine();
 		}
-		//Método que verifica se ja existe um Número de registro igual cadastrado
+		// Método que verifica se ja existe um Número de registro igual cadastrado
 		if (Verificadores.verificarNumeroRegistroVendedor(numRegistro, vendedores)) {
 			return;
 		}
@@ -46,11 +39,11 @@ public class VendedorController {
 
 		System.out.print("CPF: ");
 		String cpf = sc.nextLine();
-		//Método para verificar se o CPF tem 11 digitos e não contém letras
+		// Método para verificar se o CPF tem 11 digitos e não contém letras
 		while (Validadores.validadorCpf(cpf) == false) {
 			cpf = sc.nextLine();
 		}
-		//Método que verifica se já existe um CPF igual cadastrado
+		// Método que verifica se já existe um CPF igual cadastrado
 		if (Verificadores.verificarCPF(cpf, vendedores) == true) {
 			return;
 		}
@@ -58,7 +51,7 @@ public class VendedorController {
 
 		System.out.print("TELEFONE: ");
 		String telefone = sc.nextLine();
-		//Método para verificar se o telefone tem 11 digitos e não contém letras
+		// Método para verificar se o telefone tem 11 digitos e não contém letras
 		while (Validadores.validadorTelefone(telefone) == false) {
 			telefone = sc.nextLine();
 		}
@@ -66,16 +59,14 @@ public class VendedorController {
 
 		vendedores.add(new Vendedor(id, nome, cpf, telefone, numRegistro));
 		System.out.println("\nCadastro realizado\n");
-		//Utilização de auto incremento para o ID
+		// Utilização de auto incremento para o ID
 		id++;
 	}
 
-	public void excluir() {
+	public void excluir(String numRegistro) {
 		Scanner sc = new Scanner(System.in);
-		System.out.println("Digite o Nº REGISTRO do vendedor");
-		String numRegistro = sc.nextLine();
-		//Consulta um vendedor na lista e retorna esse vendedor
-		Vendedor vendedor = Verificadores.consultarNumeroRegistro(numRegistro, vendedores);
+		// Consulta um vendedor na lista e retorna esse vendedor
+		Vendedor vendedor = consultar(numRegistro);
 
 		if (vendedor != null) {
 			System.out.println("\nDigite 'S' para excluir ou 'N' para cancelar\n");
@@ -93,27 +84,36 @@ public class VendedorController {
 			return;
 		}
 	}
-	
+
 	public void mostrarTudo() {
-		//Exibe a lista de todos os vendedores cadastrados
-		Verificadores.mostrarTudoVendedor(vendedores);
+		System.out.println("DADOS CADASTRADOS\n");
+
+		for (Vendedor x : vendedores) {
+			System.out.println("\nID: " + x.getId() + "\nNÚMERO DE REGISTRO: " + x.getNumeroRegistro() + "\nNOME: "
+					+ x.getNome() + "\nCPF: " + x.getCpf() + "\nTELEFONE: " + x.getTelefone() + "\n");
+		}
 	}
 
-	public void consultar() {
-		Scanner sc = new Scanner(System.in);
-		System.out.print("DIGITE O Nº DE REGISTRO: ");
-		String numRegistro = sc.nextLine();
+	public Vendedor consultar(String numRegistro) {
 
-		Verificadores.consultarNumeroRegistro(numRegistro, vendedores);
+		for (Vendedor xVendedor : vendedores) {
+			if (numRegistro.equals(xVendedor.getNumeroRegistro())) {
+				System.out.println("\nDADOS\n" + "\nID: " + xVendedor.getId() + "\nNOME: " + xVendedor.getNome()
+						+ "\nNÚMERO DE REGISTRO: " + xVendedor.getNumeroRegistro() + "\nCPF: " + xVendedor.getCpf()
+						+ "\nTELEFONE: " + xVendedor.getTelefone());
+				System.out.println("________________________________\n");
+				return xVendedor;
+			}
+		}
+		System.out.println("\nNENHUM VENDEDOR ENCONTRADO\n");
+		return null;
 	}
 
-	public void alterarDados() {
+	public void alterarDados(String numRegistro) {
 		Scanner sc = new Scanner(System.in);
-		System.out.println("Nº REGISTRO: ");
-		String numRegistro = sc.nextLine();
 
 		int resposta = 0;
-		Vendedor vendedor = Verificadores.consultarNumeroRegistro(numRegistro, vendedores);
+		Vendedor vendedor = consultar(numRegistro);
 		if (vendedor != null) {
 			MetodosDeAlteracao.alteracaoVendedor(resposta, vendedor, vendedores);
 		}

@@ -10,16 +10,8 @@ import br.com.java1.utils.Validadores;
 import br.com.java1.utils.Verificadores;
 
 public class ClienteController {
-	private List<Cliente> clientes = new ArrayList<Cliente>();
+	List<Cliente> clientes = new ArrayList<Cliente>();
 	private int id = 1;
-
-	public List<Cliente> getClientes() {
-		return clientes;
-	}
-
-	public void setClientes(List<Cliente> clientes) {
-		this.clientes = clientes;
-	}
 
 	public void cadastrar() {
 		Cliente cliente = new Cliente();
@@ -28,12 +20,12 @@ public class ClienteController {
 
 		System.out.println("RG");
 		String rg = sc.nextLine();
-		//Método que verifica se o preenchimento do RG não contém letras
+		// Método que verifica se o preenchimento do RG não contém letras
 		while (Validadores.validadorDeRegistros(rg) == false) {
 			System.out.println("RG");
 			rg = sc.nextLine();
 		}
-		//Método que verifica se ja existe um RG igual cadastrado
+		// Método que verifica se ja existe um RG igual cadastrado
 		if (Verificadores.verificarRGcliente(rg, clientes)) {
 			return;
 		}
@@ -45,11 +37,11 @@ public class ClienteController {
 
 		System.out.print("CPF: ");
 		String cpf = sc.nextLine();
-		//Método para verificar se o CPF tem 11 digitos e não contém letras
+		// Método para verificar se o CPF tem 11 digitos e não contém letras
 		while (Validadores.validadorCpf(cpf) == false) {
 			cpf = sc.nextLine();
 		}
-		//Método que verifica se já existe um CPF igual cadastrado
+		// Método que verifica se já existe um CPF igual cadastrado
 		if (Verificadores.verificarCPF(cpf, clientes) == true) {
 			return;
 		}
@@ -57,7 +49,7 @@ public class ClienteController {
 
 		System.out.print("TELEFONE: ");
 		String telefone = sc.nextLine();
-		//Método para verificar se o telefone tem 11 digitos e não contém letras
+		// Método para verificar se o telefone tem 11 digitos e não contém letras
 		while (Validadores.validadorTelefone(telefone) == false) {
 			telefone = sc.nextLine();
 		}
@@ -65,16 +57,15 @@ public class ClienteController {
 
 		clientes.add(new Cliente(id, nome, cpf, telefone, rg));
 		System.out.println("\nCadastro realizado\n");
-		//Utilização de auto incremento para o ID
+		// Utilização de auto incremento para o ID
 		id++;
 	}
 
-	public void excluir() {
+	public void excluir(String rg) {
 		Scanner sc = new Scanner(System.in);
-		System.out.println("Digite o RG do cliente");
-		String rg = sc.nextLine();
-		//Consulta um cliente na lista e retorna esse cliente
-		Cliente cliente = Verificadores.consultarRG(rg, clientes);
+
+		// Consulta um cliente na lista e retorna esse cliente
+		Cliente cliente = consultar(rg);
 		if (cliente != null) {
 			System.out.println("\nDigite 'S' para excluir ou 'N' para cancelar\n");
 			String resposta = sc.nextLine();
@@ -91,26 +82,36 @@ public class ClienteController {
 			return;
 		}
 	}
-	
+
 	public void mostrarTudo() {
-		//Exibe a lista de todos os clientes cadastrados
-		Verificadores.mostrarTudoCliente(clientes);
+		System.out.println("DADOS CADASTRADOS\n");
+
+		for (Cliente x : clientes) {
+			System.out.println("\nID: " + x.getId() + "\nRG: " + x.getRg() + "\nNOME: " + x.getNome() + "\nCPF: "
+					+ x.getCpf() + "\nTELEFONE: " + x.getTelefone() + "\n");
+		}
 	}
 
-	public void consultar() {
-		Scanner sc = new Scanner(System.in);
-		System.out.print("Digite o RG: ");
-		String rg = sc.nextLine();
+	public Cliente consultar(String rg) {
 
-		Verificadores.consultarRG(rg, clientes);
+		for (Cliente xCliente : clientes) {
+			if (rg.equals(xCliente.getRg())) {
+				System.out.println("\nDADOS\n" + "\nID: " + xCliente.getId() + "\nNOME: " + xCliente.getNome()
+						+ "\nRG: " + xCliente.getRg() + "\nCPF: " + xCliente.getCpf() + "\nTELEFONE: "
+						+ xCliente.getTelefone());
+				System.out.println("________________________________\n");
+				return xCliente;
+			}
+		}
+		System.out.println("\nNENHUM CLIENTE ENCONTRADO\n");
+		return null;
 	}
 
-	public void alterarDados() {
+	public void alterarDados(String rg) {
 		Scanner sc = new Scanner(System.in);
-		System.out.println("RG: ");
-		String rg = sc.nextLine();
+		
 		int resposta = 0;
-		Cliente cliente = Verificadores.consultarRG(rg, clientes);
+		Cliente cliente = consultar(rg);
 		if (cliente != null) {
 			MetodosDeAlteracao.alteracaoCliente(resposta, cliente, clientes);
 		}
