@@ -3,11 +3,11 @@ package br.com.java1.views;
 import java.util.Scanner;
 
 public class MenuPrincipal {
-	
+	static UI ui = new UI();
 	public static void menu() {
 		boolean menuAtivo = true;
 		int opcaoEscolhida;
-		UI ui = new UI();
+		
 		
 		do {
 			System.out.println("Bem-Vindo ao Gerenciamento de Lojas Veiculares. "
