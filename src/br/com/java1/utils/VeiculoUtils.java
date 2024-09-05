@@ -68,10 +68,7 @@ public class VeiculoUtils {
 			System.out.println("MODELO INVÁLIDO, DIGITE NOVAMENTE \n");
 			return false;
 }
- 
-	public static 	
-	
-	
+		
 	}
 	}
 
