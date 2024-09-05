@@ -10,8 +10,16 @@ import br.com.java1.utils.Validadores;
 import br.com.java1.utils.Verificadores;
 
 public class VendedorController {
-	List<Vendedor> vendedores = new ArrayList<Vendedor>();
-	int id = 0;
+	private List<Vendedor> vendedores = new ArrayList<Vendedor>();
+	private int id = 1;
+
+	public List<Vendedor> getVendedores() {
+		return vendedores;
+	}
+
+	public void setVendedores(List<Vendedor> vendedores) {
+		this.vendedores = vendedores;
+	}
 
 	public void cadastrar() {
 		Vendedor vendedor = new Vendedor();
@@ -21,10 +29,12 @@ public class VendedorController {
 
 		System.out.println("NÚMERO DE REGISTRO");
 		String numRegistro = sc.nextLine();
+		//Método que verifica se o preenchimento do Número de registro não contém letras
 		while (Validadores.validadorDeRegistros(numRegistro) == false) {
 			System.out.println("NÚMERO DE REGISTRO");
 			numRegistro = sc.nextLine();
 		}
+		//Método que verifica se ja existe um Número de registro igual cadastrado
 		if (Verificadores.verificarNumeroRegistroVendedor(numRegistro, vendedores)) {
 			return;
 		}
@@ -36,9 +46,11 @@ public class VendedorController {
 
 		System.out.print("CPF: ");
 		String cpf = sc.nextLine();
+		//Método para verificar se o CPF tem 11 digitos e não contém letras
 		while (Validadores.validadorCpf(cpf) == false) {
 			cpf = sc.nextLine();
 		}
+		//Método que verifica se já existe um CPF igual cadastrado
 		if (Verificadores.verificarCPF(cpf, vendedores) == true) {
 			return;
 		}
@@ -46,6 +58,7 @@ public class VendedorController {
 
 		System.out.print("TELEFONE: ");
 		String telefone = sc.nextLine();
+		//Método para verificar se o telefone tem 11 digitos e não contém letras
 		while (Validadores.validadorTelefone(telefone) == false) {
 			telefone = sc.nextLine();
 		}
@@ -53,6 +66,7 @@ public class VendedorController {
 
 		vendedores.add(new Vendedor(id, nome, cpf, telefone, numRegistro));
 		System.out.println("\nCadastro realizado\n");
+		//Utilização de auto incremento para o ID
 		id++;
 	}
 
@@ -60,6 +74,7 @@ public class VendedorController {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Digite o Nº REGISTRO do vendedor");
 		String numRegistro = sc.nextLine();
+		//Consulta um vendedor na lista e retorna esse vendedor
 		Vendedor vendedor = Verificadores.consultarNumeroRegistro(numRegistro, vendedores);
 
 		if (vendedor != null) {
@@ -80,6 +95,7 @@ public class VendedorController {
 	}
 	
 	public void mostrarTudo() {
+		//Exibe a lista de todos os vendedores cadastrados
 		Verificadores.mostrarTudoVendedor(vendedores);
 	}
 
