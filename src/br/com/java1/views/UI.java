@@ -7,6 +7,7 @@ import br.com.java1.controllers.LojaController;
 import br.com.java1.controllers.VeiculoController;
 import br.com.java1.controllers.VendaController;
 import br.com.java1.controllers.VendedorController;
+import br.com.java1.models.Veiculo;
 
 public class UI {
 	
@@ -110,14 +111,13 @@ public class UI {
 				+ "\n *2- VOLTAR AO MENU ANTERIOR. ");
 		
 		Scanner scan = new Scanner(System.in);
-		
+
 		opcaoEscolhida = scan.nextInt();
 		scan.nextLine();
 		
 		switch (opcaoEscolhida) {
 			case 1:
 				System.out.println("INFORME A PLACA: ");
-				
 				placa = scan.nextLine();
 				
 				veiculoController.buscarPorPlaca(placa);
@@ -202,7 +202,7 @@ public class UI {
 	
 	public void gerenciarVenda() {
 		int opcaoEscolhida;
-		
+		String placa;
 		
 		System.out.println(
 				"\n *1- CADASTRAR VENDA. "
@@ -214,7 +214,11 @@ public class UI {
 		
 		switch (opcaoEscolhida) {
 			case 1:
-				vendaController.cadastrar();
+				System.out.println("Informe a placa do veículo: ");
+				placa = scan.nextLine();
+				var veiculo = veiculoController.buscarPorPlaca(placa);
+				
+				vendaController.cadastrar(veiculo);
 				break;
 			
 			default:
@@ -357,6 +361,7 @@ public class UI {
 	public void manutencaoVenda() {
 		int opcaoEscolhida;
 		int id;
+		String placa;
 		System.out.println(
 				"\n *1- CADASTRAR VENDA. "
 				+ "\n *2- EXCLUIR VENDA. "
@@ -366,14 +371,21 @@ public class UI {
 		
 		opcaoEscolhida = scan.nextInt();
 		
+		scan.nextLine();
+		
 		switch (opcaoEscolhida) {
 			case 1:
-				vendaController.cadastrar();
+				System.out.println("Informe a placa do veículo: ");
+				placa = scan.nextLine();
+				var veiculo = veiculoController.buscarPorPlaca(placa);
+				
+				vendaController.cadastrar(veiculo);
 				break;
 			
 			case 2:
-				System.out.println("INFORME O ID: ");
+				System.out.println("INFORME O ID DA VENDA: ");
 				id = scan.nextInt();
+				
 				vendaController.excluir(id);
 				break;
 			
