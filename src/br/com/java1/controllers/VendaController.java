@@ -36,6 +36,7 @@ public class VendaController {
 		
 		vendas.add(new Venda(venda.getId(), venda.getVeiculo(), venda.getVendedor(), 
 				venda.getCliente(), venda.getDataVenda()));
+		System.out.println("VENDA CADASTRADA COM SUCESSO");
 	}
 	
 	public void buscarTudo() {

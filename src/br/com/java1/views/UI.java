@@ -140,9 +140,10 @@ public class UI {
 				+ "\n *2- VOLTAR AO MENU ANTERIOR. ");
 		
 		Scanner scan = new Scanner(System.in);
-		scan.nextLine();
+		
 		
 		opcaoEscolhida = scan.nextInt();
+		scan.nextLine();
 		
 		switch (opcaoEscolhida) {
 			case 1:
@@ -166,9 +167,10 @@ public class UI {
 				+ "\n *2- VOLTAR. ");
 		
 		Scanner scan = new Scanner(System.in);
-		scan.nextLine();
+		
 		
 		opcaoEscolhida = scan.nextInt();
+		scan.nextLine();
 		
 		switch (opcaoEscolhida) {
 			case 1:
@@ -269,6 +271,7 @@ public class UI {
 		Scanner scan = new Scanner(System.in);
 		
 		opcaoEscolhida = scan.nextInt();
+		scan.nextLine();
 		
 		switch (opcaoEscolhida) {
 			case 1:
@@ -342,6 +345,7 @@ public class UI {
 		Scanner scan = new Scanner(System.in);
 		
 		opcaoEscolhida = scan.nextInt();
+		scan.nextLine();
 		
 		switch (opcaoEscolhida) {
 			case 1:
@@ -378,6 +382,7 @@ public class UI {
 		Scanner scan = new Scanner(System.in);
 		
 		opcaoEscolhida = scan.nextInt();
+		scan.nextLine();
 		
 		switch (opcaoEscolhida) {
 			case 1:
