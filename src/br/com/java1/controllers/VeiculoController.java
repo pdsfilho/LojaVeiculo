@@ -18,6 +18,7 @@ public class VeiculoController {
 		
 		boolean continuar = true;
 		String opcao = "S";
+		int idVeiculo = 1;
 		
 		do {
 			Veiculo veiculo = new Veiculo();
@@ -46,13 +47,12 @@ public class VeiculoController {
 			
 			System.out.println("\n A PLACA DO VEÍCULO: ");
 			String placa = scan.nextLine();
+			placa.toUpperCase();
 			veiculo.setPlaca(placa);
 			
 			System.out.println("\n INFORME O PREÇO DO VEICULO: ");
 			double preco = scan2.nextDouble();
 			veiculo.setPreco(preco);
-			
-			
 			
 			tipoveiculo.setId(idTipoVeiculo);
 			
@@ -66,7 +66,7 @@ public class VeiculoController {
 			
 			System.out.println("\n");
 			
-			veiculos.add(new Veiculo(idTipoVeiculo, marca, modelo, ano, placa, preco,
+			veiculos.add(new Veiculo(idVeiculo, marca, modelo, ano, placa, preco,
 					new TipoVeiculo(idTipoVeiculo, categoria, descricao)));
 			idVeiculo ++;
 			
@@ -102,7 +102,6 @@ public class VeiculoController {
 				System.out.println("\n ANO: " + l.getAno());
 				System.out.println("\n PLACA: "+ l.getPlaca());
 				System.out.println("\n PRECO: "+ l.getPreco());
-				System.out.println("\n TIPO DE VEICULO: " + l.getTipoVeiculo());
 				System.out.println("\n CATEGORIA: " + l.getTipoVeiculo().getCategoria());
 				System.out.println("\n DESCRICAO: " + l.getTipoVeiculo().getDescricao());
 							
