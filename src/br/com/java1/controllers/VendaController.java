@@ -24,13 +24,18 @@ public class VendaController {
 	//Id da Venda começa com 1 para simular o auto incremento do SGBD.
 	int idVenda = 1;
 	
-	public void cadastrar(Veiculo veiculo) {
+	public void cadastrar(Veiculo veiculo, Vendedor vendedor, Cliente cliente) {
 
 		boolean aprovado = false;
 		
 		venda.setId(idVenda);
 		venda.setVeiculo(veiculo);
+		venda.setVendedor(vendedor);
+		venda.setCliente(cliente);
+		venda.setDataVenda(LocalDateTime.now());
 		
+		vendas.add(new Venda(venda.getId(), venda.getVeiculo(), venda.getVendedor(), 
+				venda.getCliente(), venda.getDataVenda()));
 	}
 	
 	public void buscarTudo() {

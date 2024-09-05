@@ -7,7 +7,9 @@ import br.com.java1.controllers.LojaController;
 import br.com.java1.controllers.VeiculoController;
 import br.com.java1.controllers.VendaController;
 import br.com.java1.controllers.VendedorController;
+import br.com.java1.models.Cliente;
 import br.com.java1.models.Veiculo;
+import br.com.java1.models.Vendedor;
 
 public class UI {
 	
@@ -131,19 +133,22 @@ public class UI {
 	
 	public void gerenciarVendedor() {
 		int opcaoEscolhida;
-		
+		String numRegistro;
 		
 		System.out.println(
 				"\n *1- CONSULTAR VENDEDOR POR NÚMERO DE REGISTRO. "
 				+ "\n *2- VOLTAR AO MENU ANTERIOR. ");
 		
 		Scanner scan = new Scanner(System.in);
+		scan.nextLine();
 		
 		opcaoEscolhida = scan.nextInt();
 		
 		switch (opcaoEscolhida) {
 			case 1:
-				vendedorController.consultar();
+				System.out.println("Informe o número de registro do vendedor: ");
+				numRegistro = scan.nextLine();
+				vendedorController.consultar(numRegistro);
 				break;
 			
 			default:
@@ -153,20 +158,29 @@ public class UI {
 	
 	public void gerenciarCliente() {
 		int opcaoEscolhida;
+		String rg;
 		
 		System.out.println(
-				"\n *1- LISTAR TODOS OS CLIENTES. "
+				"\n *1- CADASTRAR CLIENTE"
+				+ "\n *2- CONSULTAR CLIENTE POR RG"
 				+ "\n *2- VOLTAR. ");
 		
 		Scanner scan = new Scanner(System.in);
+		scan.nextLine();
 		
 		opcaoEscolhida = scan.nextInt();
 		
 		switch (opcaoEscolhida) {
 			case 1:
-				clienteController.consultar();
+				clienteController.mostrarTudo();
 				break;
 			
+			case 2:
+				System.out.println("Informe o RG do cliente: ");
+				rg = scan.nextLine();
+				clienteController.consultar(rg);
+				break;
+				
 			default:
 				MenuPrincipal.menu();
 		}
@@ -203,6 +217,8 @@ public class UI {
 	public void gerenciarVenda() {
 		int opcaoEscolhida;
 		String placa;
+		String numRegistro;
+		String rg;
 		
 		System.out.println(
 				"\n *1- CADASTRAR VENDA. "
@@ -211,14 +227,26 @@ public class UI {
 		Scanner scan = new Scanner(System.in);
 		
 		opcaoEscolhida = scan.nextInt();
+		scan.nextLine();
 		
 		switch (opcaoEscolhida) {
 			case 1:
+				//Pegar os objetos retornados das buscas.
 				System.out.println("Informe a placa do veículo: ");
 				placa = scan.nextLine();
-				var veiculo = veiculoController.buscarPorPlaca(placa);
+				Veiculo veiculo = veiculoController.buscarPorPlaca(placa);
 				
-				vendaController.cadastrar(veiculo);
+				System.out.println("Informe o número de registro do vendedor: ");
+				numRegistro = scan.nextLine();
+				Vendedor vendedor = vendedorController.consultar(numRegistro);
+				
+				System.out.println("Informe o RG do cliente: ");
+				rg = scan.nextLine();
+				Cliente cliente = clienteController.consultar(rg);
+				
+				//Passar os objetos para a Venda.
+				vendaController.cadastrar(veiculo, vendedor, cliente);
+				
 				break;
 			
 			default:
@@ -250,12 +278,14 @@ public class UI {
 			case 2:
 				System.out.println("INFORME A PLACA: ");
 				placa = scan.nextLine();
+				
 				veiculoController.excluir(placa);
 				break;
 			
 			case 3:
 				System.out.println("INFORME A PLACA: ");
 				placa = scan.nextLine();
+				
 				veiculoController.alterar(placa);
 				break;
 			
@@ -301,6 +331,8 @@ public class UI {
 	public void manutencaoVendedor() {
 		int opcaoEscolhida;
 		int id;
+		String numRegistro;
+		
 		System.out.println(
 				"\n *1- CADASTRAR VENDEDOR. "
 				+ "\n *2- EXCLUIR VENDEDOR. "
@@ -317,11 +349,15 @@ public class UI {
 				break;
 			
 			case 2:
-				vendedorController.excluir();
+				System.out.println("Informe o número de registro do vendedor: ");
+				numRegistro = scan.nextLine();
+				vendedorController.excluir(numRegistro);
 				break;
 			
 			case 3:
-				vendedorController.alterarDados();
+				System.out.println("Informe o número de registro do vendedor: ");
+				numRegistro = scan.nextLine();
+				vendedorController.alterarDados(numRegistro);
 				break;
 			
 			default:
@@ -331,6 +367,8 @@ public class UI {
 	public void manutencaoCliente() {
 		int opcaoEscolhida;
 		int id;
+		String rg;
+		
 		System.out.println(
 				"\n *1- CADASTRAR CLIENTE. "
 				+ "\n *2- EXCLUIR CLIENTE. "
@@ -347,11 +385,15 @@ public class UI {
 				break;
 			
 			case 2:
-				clienteController.excluir();
+				System.out.println("Informe o RG do cliente: ");
+				rg = scan.nextLine();
+				clienteController.excluir(rg);
 				break;
 			
 			case 3:
-				clienteController.alterarDados();
+				System.out.println("Informe o RG do cliente: ");
+				rg = scan.nextLine();
+				clienteController.alterarDados(rg);
 				break;
 			
 			default:
@@ -361,11 +403,16 @@ public class UI {
 	public void manutencaoVenda() {
 		int opcaoEscolhida;
 		int id;
+		
 		String placa;
+		String numRegistro;
+		String rg;
+		
 		System.out.println(
 				"\n *1- CADASTRAR VENDA. "
 				+ "\n *2- EXCLUIR VENDA. "
-				+ "\n *3- VOLTAR. ");
+				+ "\n *3- LISTAR VENDAS. "
+				+ "\n *4- VOLTAR. ");
 		
 		Scanner scan = new Scanner(System.in);
 		
@@ -375,11 +422,21 @@ public class UI {
 		
 		switch (opcaoEscolhida) {
 			case 1:
+				//Pegar os objetos retornados das buscas.
 				System.out.println("Informe a placa do veículo: ");
 				placa = scan.nextLine();
-				var veiculo = veiculoController.buscarPorPlaca(placa);
+				Veiculo veiculo = veiculoController.buscarPorPlaca(placa);
 				
-				vendaController.cadastrar(veiculo);
+				System.out.println("Informe o número de registro do vendedor: ");
+				numRegistro = scan.nextLine();
+				Vendedor vendedor = vendedorController.consultar(numRegistro);
+				
+				System.out.println("Informe o RG do cliente: ");
+				rg = scan.nextLine();
+				Cliente cliente = clienteController.consultar(rg);
+				
+				//Passar os objetos para a Venda.
+				vendaController.cadastrar(veiculo, vendedor, cliente);
 				break;
 			
 			case 2:
@@ -389,6 +446,9 @@ public class UI {
 				vendaController.excluir(id);
 				break;
 			
+			case 3:
+				vendaController.buscarTudo();
+				
 			default:
 				MenuPrincipal.menu();
 		}
