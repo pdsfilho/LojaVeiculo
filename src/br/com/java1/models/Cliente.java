@@ -2,6 +2,8 @@ package br.com.java1.models;
 
 import java.util.Objects;
 
+import br.com.java1.utils.Formatadores;
+
 public class Cliente extends Pessoa{
 	
 	private String rg;
@@ -21,6 +23,13 @@ public class Cliente extends Pessoa{
 
 	public void setRg(String rg) {
 		this.rg = rg;
+	}
+	
+	public static String exibirDadosCliente(Cliente cliente) {
+		return "\nID: " + cliente.getId() + "\nNOME: " + cliente.getNome()
+		+ "\nRG: " + Formatadores.formatarRG(cliente.getRg()) + "\nCPF: "
+		+ Formatadores.formatarCpf(cliente.getCpf()) + "\nTELEFONE: "
+		+ Formatadores.formatarTelefone(cliente.getTelefone());
 	}
 
 	@Override

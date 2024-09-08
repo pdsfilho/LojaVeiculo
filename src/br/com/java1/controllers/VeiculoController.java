@@ -7,6 +7,7 @@ import java.util.Scanner;
 
 import br.com.java1.models.TipoVeiculo;
 import br.com.java1.models.Veiculo;
+import br.com.java1.utils.VeiculoUtils;
 
 public class VeiculoController {
 	List<Veiculo> veiculos = new ArrayList<Veiculo>();
@@ -42,16 +43,46 @@ public class VeiculoController {
 			veiculo.setModelo(modelo);
 			
 			System.out.println("\n INFORME O ANO DO VEÍCULO: ");
-			int ano = scan2.nextInt();
+			int ano = 0;
+			boolean validador = false;
+			while (validador == false) {
+				try {
+					ano = scan.nextInt();
+					scan.nextLine();
+					validador = true;
+				} catch (java.util.InputMismatchException e) {
+					scan.nextLine();
+					System.out.println("Digite apenas números");
+				}
+			}
+			
 			veiculo.setAno(ano);
 			
 			System.out.println("\n A PLACA DO VEÍCULO: ");
 			String placa = scan.nextLine();
 			placa.toUpperCase();
+			while (VeiculoUtils.validaPlaca(placa)==false) {
+				placa = scan.nextLine();
+			}
+			while (VeiculoUtils.verificaPlaca(placa, veiculos) == false) {
+				System.out.println("Placa já cadastrada, digite uma placa diferente\n");
+				placa = scan.nextLine();
+			}
 			veiculo.setPlaca(placa);
 			
 			System.out.println("\n INFORME O PREÇO DO VEICULO: ");
-			double preco = scan2.nextDouble();
+			double preco = 0;
+			validador = false;
+			while (validador == false) {
+				try {
+					preco = scan.nextDouble();
+					scan.nextLine();
+					validador = true;
+				} catch (java.util.InputMismatchException e) {
+					System.out.println("Digite apenas números");
+					scan.nextLine();
+				}
+			}
 			veiculo.setPreco(preco);
 			
 			tipoveiculo.setId(idTipoVeiculo);
@@ -125,33 +156,11 @@ public class VeiculoController {
 	
 	public void alterar(String placa) {
 		try {
-			
 			//NÃO ENTENDI AINDA MUITO BEM A VARIAVEL VAR MAS DEIXEI PQ SE FUNCIONOU NO LOJA DEVE FUNCIONAR NO VEICULO
-
-
 			var veiculo = buscarPorPlaca(placa);
 			
-			Scanner scan = new Scanner(System.in);
-			
-			System.out.println("ESCOLHA UMA OPÇÃO PARA MODIFICAR: ");
-			
-			System.out.println("\n ID DO VEICULO: " + veiculo.getId());
-			System.out.println("\n MARCA: " +veiculo.getMarca());
-			System.out.println("\n MODELO: " + veiculo.getModelo());
-			System.out.println("\n ANO: " + veiculo.getAno());
-			System.out.println("\n PLACA: "+ veiculo.getPlaca());
-			System.out.println("\n PRECO: "+ veiculo.getPreco());
-			System.out.println("\n CATEGORIA: " + veiculo.getTipoVeiculo().getCategoria());
-			System.out.println("\n DESCRICAO: " + veiculo.getTipoVeiculo().getDescricao());
-			
-			System.out.println("________________________________\n");
-			
-			
 			//PELO QUE ENTENDI A VARIAVEL VAR VEICULO PRECISARIA DE UMA CLASSE VEICULO NO PACOTE UTILS PARA FUNCIONAR CRIEI UMA NA SEQUENCIA
-			
-
-			int opcao = scan.nextInt();
-			//VeiculoUtils.opcoesVeiculo(veiculo, opcao);
+			VeiculoUtils.opcoesVeiculo(veiculo);
 			
 			buscarPorPlaca(placa);
 		}

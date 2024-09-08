@@ -56,8 +56,13 @@ public class MetodosDeAlteracao {
 				break;
 			case 2:
 				String novoNome = MetodosDeAlteracao.alterarNome();
-				cliente.setNome(novoNome);
-				System.out.println("ALTERAÇÃO REALIZADA COM SUCESSO\n");
+				if (Validadores.validaNome(novoNome) == false) {
+					break;
+				}
+				else {
+					cliente.setNome(novoNome);
+					System.out.println("ALTERAÇÃO REALIZADA COM SUCESSO\n");
+				}
 				break;
 			case 3:
 				String novoCPF = MetodosDeAlteracao.alterarCPF();
@@ -109,8 +114,13 @@ public class MetodosDeAlteracao {
 				break;
 			case 2:
 				String novoNome = MetodosDeAlteracao.alterarNome();
-				vendedor.setNome(novoNome);
-				System.out.println("ALTERAÇÃO REALIZADA COM SUCESSO\n");
+				if (Validadores.validaNome(novoNome) == false) {
+					break;
+				}
+				else {
+					vendedor.setNome(novoNome);
+					System.out.println("ALTERAÇÃO REALIZADA COM SUCESSO\n");
+				}
 				break;
 			case 3:
 				String novoCPF = MetodosDeAlteracao.alterarCPF();

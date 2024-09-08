@@ -2,6 +2,8 @@ package br.com.java1.models;
 
 import java.util.Objects;
 
+import br.com.java1.utils.Formatadores;
+
 public class Vendedor extends Pessoa {
 	
 	private String numeroRegistro;
@@ -19,6 +21,12 @@ public class Vendedor extends Pessoa {
 
 	public void setNumeroRegistro(String numeroRegistro) {
 		this.numeroRegistro = numeroRegistro;
+	}
+	
+	public static String exibirDadosVendedor(Vendedor vendedor) {
+		return "\nDADOS\n" + "\nID: " + vendedor.getId() + "\nNOME: " + vendedor.getNome()
+		+ "\nNÚMERO DE REGISTRO: " + vendedor.getNumeroRegistro() + "\nCPF: " + Formatadores.formatarCpf(vendedor.getCpf())
+		+ "\nTELEFONE: " + Formatadores.formatarTelefone(vendedor.getTelefone());
 	}
 
 	@Override

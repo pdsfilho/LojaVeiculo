@@ -82,6 +82,17 @@ public class Veiculo {
 	public void setTipoVeiculo(TipoVeiculo tipoVeiculo) {
 		this.tipoVeiculo = tipoVeiculo;
 	}
+	
+	public static String exibirDadosVeiculo(Veiculo veiculo) {
+		return "\n ID DO VEICULO: " + veiculo.getId() +
+		"\n MARCA: " + veiculo.getMarca() +
+		"\n MODELO: " + veiculo.getModelo() +
+		"\n ANO: " + veiculo.getAno() +
+		"\n PLACA: "+ veiculo.getPlaca() +
+		"\n PRECO: "+ veiculo.getPreco() +
+		"\n CATEGORIA: " + veiculo.getTipoVeiculo().getCategoria() +
+		"\n DESCRICAO: " + veiculo.getTipoVeiculo().getDescricao();
+	}
 
 	@Override
 	public int hashCode() {

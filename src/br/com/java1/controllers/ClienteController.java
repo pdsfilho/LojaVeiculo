@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Scanner;
 
 import br.com.java1.models.Cliente;
+import br.com.java1.utils.Formatadores;
 import br.com.java1.utils.MetodosDeAlteracao;
 import br.com.java1.utils.Validadores;
 import br.com.java1.utils.Verificadores;
@@ -18,7 +19,7 @@ public class ClienteController {
 		Scanner sc = new Scanner(System.in);
 		cliente.setId(id);
 
-		System.out.println("RG");
+		System.out.println("RG COM 7 DIGITOS");
 		String rg = sc.nextLine();
 		// Método que verifica se o preenchimento do RG não contém letras
 		while (Validadores.validadorDeRegistros(rg) == false) {
@@ -33,6 +34,10 @@ public class ClienteController {
 
 		System.out.print("NOME: ");
 		String nome = sc.nextLine().toUpperCase();
+		// Impede que o nome tenha menos que 5 caracteres e números
+		while (Validadores.validaNome(nome) == false) {
+			nome = sc.nextLine();
+		}
 		cliente.setNome(nome);
 
 		System.out.print("CPF: ");
@@ -86,9 +91,11 @@ public class ClienteController {
 	public void mostrarTudo() {
 		System.out.println("DADOS CADASTRADOS\n");
 
-		for (Cliente x : clientes) {
-			System.out.println("\nID: " + x.getId() + "\nRG: " + x.getRg() + "\nNOME: " + x.getNome() + "\nCPF: "
-					+ x.getCpf() + "\nTELEFONE: " + x.getTelefone() + "\n");
+		for (Cliente xCliente : clientes) {
+			System.out.println("\nDADOS\n" + "\nID: " + xCliente.getId() + "\nNOME: " + xCliente.getNome()
+			+ "\nRG: " + Formatadores.formatarRG(xCliente.getRg()) + "\nCPF: "
+			+ Formatadores.formatarCpf(xCliente.getCpf()) + "\nTELEFONE: "
+			+ Formatadores.formatarTelefone(xCliente.getTelefone())+"\n");
 		}
 	}
 
@@ -97,8 +104,9 @@ public class ClienteController {
 		for (Cliente xCliente : clientes) {
 			if (rg.equals(xCliente.getRg())) {
 				System.out.println("\nDADOS\n" + "\nID: " + xCliente.getId() + "\nNOME: " + xCliente.getNome()
-						+ "\nRG: " + xCliente.getRg() + "\nCPF: " + xCliente.getCpf() + "\nTELEFONE: "
-						+ xCliente.getTelefone());
+						+ "\nRG: " + Formatadores.formatarRG(xCliente.getRg()) + "\nCPF: "
+						+ Formatadores.formatarCpf(xCliente.getCpf()) + "\nTELEFONE: "
+						+ Formatadores.formatarTelefone(xCliente.getTelefone()));
 				System.out.println("________________________________\n");
 				return xCliente;
 			}
@@ -109,7 +117,7 @@ public class ClienteController {
 
 	public void alterarDados(String rg) {
 		Scanner sc = new Scanner(System.in);
-		
+
 		int resposta = 0;
 		Cliente cliente = consultar(rg);
 		if (cliente != null) {

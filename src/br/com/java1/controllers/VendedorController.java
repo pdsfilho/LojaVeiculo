@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Scanner;
 
 import br.com.java1.models.Vendedor;
+import br.com.java1.utils.Formatadores;
 import br.com.java1.utils.MetodosDeAlteracao;
 import br.com.java1.utils.Validadores;
 import br.com.java1.utils.Verificadores;
@@ -24,7 +25,7 @@ public class VendedorController {
 		// Método que verifica se o preenchimento do Número de registro não contém
 		// letras
 		while (Validadores.validadorDeRegistros(numRegistro) == false) {
-			System.out.println("NÚMERO DE REGISTRO");
+			System.out.println("NÚMERO DE REGISTRO COM 7 DIGITOS");
 			numRegistro = sc.nextLine();
 		}
 		// Método que verifica se ja existe um Número de registro igual cadastrado
@@ -35,6 +36,10 @@ public class VendedorController {
 
 		System.out.print("NOME: ");
 		String nome = sc.nextLine().toUpperCase();
+		//Impede que o nome tenha menos que 5 caracteres e números
+		while (Validadores.validaNome(nome) == false) {
+			nome = sc.nextLine();
+		}
 		vendedor.setNome(nome);
 
 		System.out.print("CPF: ");
@@ -88,9 +93,10 @@ public class VendedorController {
 	public void mostrarTudo() {
 		System.out.println("DADOS CADASTRADOS\n");
 
-		for (Vendedor x : vendedores) {
-			System.out.println("\nID: " + x.getId() + "\nNÚMERO DE REGISTRO: " + x.getNumeroRegistro() + "\nNOME: "
-					+ x.getNome() + "\nCPF: " + x.getCpf() + "\nTELEFONE: " + x.getTelefone() + "\n");
+		for (Vendedor xVendedor : vendedores) {
+			System.out.println("\nDADOS\n" + "\nID: " + xVendedor.getId() + "\nNOME: " + xVendedor.getNome()
+			+ "\nNÚMERO DE REGISTRO: " + xVendedor.getNumeroRegistro() + "\nCPF: " + Formatadores.formatarCpf(xVendedor.getCpf())
+			+ "\nTELEFONE: " + Formatadores.formatarTelefone(xVendedor.getTelefone())+"\n");
 		}
 	}
 
@@ -99,8 +105,8 @@ public class VendedorController {
 		for (Vendedor xVendedor : vendedores) {
 			if (numRegistro.equals(xVendedor.getNumeroRegistro())) {
 				System.out.println("\nDADOS\n" + "\nID: " + xVendedor.getId() + "\nNOME: " + xVendedor.getNome()
-						+ "\nNÚMERO DE REGISTRO: " + xVendedor.getNumeroRegistro() + "\nCPF: " + xVendedor.getCpf()
-						+ "\nTELEFONE: " + xVendedor.getTelefone());
+						+ "\nNÚMERO DE REGISTRO: " + xVendedor.getNumeroRegistro() + "\nCPF: " + Formatadores.formatarCpf(xVendedor.getCpf())
+						+ "\nTELEFONE: " + Formatadores.formatarTelefone(xVendedor.getTelefone()));
 				System.out.println("________________________________\n");
 				return xVendedor;
 			}
