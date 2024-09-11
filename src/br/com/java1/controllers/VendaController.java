@@ -1,15 +1,14 @@
 package br.com.java1.controllers;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 import br.com.java1.models.Cliente;
 import br.com.java1.models.Veiculo;
 import br.com.java1.models.Venda;
 import br.com.java1.models.Vendedor;
-import br.com.java1.utils.Verificadores;
 
 public class VendaController {
 	List<Venda> vendas = new ArrayList<Venda>();
@@ -20,6 +19,7 @@ public class VendaController {
 	Veiculo veiculo = new Veiculo();
 	
 	VeiculoController veiculoController = new VeiculoController();
+	DateTimeFormatter formatador = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
 	
 	//Id da Venda começa com 1 para simular o auto incremento do SGBD.
 	int idVenda = 1;
@@ -32,21 +32,22 @@ public class VendaController {
 		venda.setVeiculo(veiculo);
 		venda.setVendedor(vendedor);
 		venda.setCliente(cliente);
-		venda.setDataVenda(LocalDateTime.now());
+		LocalDateTime dataVenda = LocalDateTime.now();
+		venda.setDataVenda(dataVenda);
 		
 		vendas.add(new Venda(venda.getId(), venda.getVeiculo(), venda.getVendedor(), 
 				venda.getCliente(), venda.getDataVenda()));
-		System.out.println("VENDA CADASTRADA COM SUCESSO");
+		System.out.println("VENDA CADASTRADA COM SUCESSO\n");
 	}
 	
 	public void buscarTudo() {
 		
 		for(Venda v : vendas) {
 			System.out.println("\n ID DA VENDA: " + v.getId());
-			System.out.println("\n VEÍCULO VENDIDO: " + v.getVeiculo());
-			System.out.println("\n VENDEDOR: " + v.getVendedor());
-			System.out.println("\n CLIENTE: " + v.getCliente());
-			System.out.println("\n DATA/HORA: " + v.getDataVenda());
+			System.out.println("\n VEÍCULO VENDIDO: " + Veiculo.exibirDadosVeiculo(v.getVeiculo()));
+			System.out.println("\n VENDEDOR: " + Vendedor.exibirDadosVendedor(v.getVendedor()));
+			System.out.println("\n CLIENTE: " + Cliente.exibirDadosCliente(v.getCliente()));
+			System.out.println("\n DATA/HORA: " + v.getDataVenda().format(formatador));
 			
 			System.out.println("________________________________\n");
 		}
@@ -57,10 +58,10 @@ public class VendaController {
 		for(Venda v : vendas) {
 			if (id == v.getId()) {
 				System.out.println("\n ID DA VENDA: " + v.getId());
-				System.out.println("\n VEÍCULO VENDIDO: " + v.getVeiculo());
-				System.out.println("\n VENDEDOR: " + v.getVendedor());
-				System.out.println("\n CLIENTE: " + v.getCliente());
-				System.out.println("\n DATA/HORA: " + v.getDataVenda());
+				System.out.println("\n VEÍCULO VENDIDO: " + Veiculo.exibirDadosVeiculo(v.getVeiculo()));
+				System.out.println("\n VENDEDOR: " + Vendedor.exibirDadosVendedor(v.getVendedor()));
+				System.out.println("\n CLIENTE: " + Cliente.exibirDadosCliente(v.getCliente()));
+				System.out.println("\n DATA/HORA: " + v.getDataVenda().format(formatador));
 				
 				System.out.println("________________________________\n");
 				return v;

@@ -2,6 +2,8 @@ package br.com.java1.views;
 
 import java.util.Scanner;
 
+import br.com.java1.utils.Validadores;
+
 public class MenuPrincipal {
 	static UI ui = new UI();
 	public static void menu() {
@@ -10,7 +12,7 @@ public class MenuPrincipal {
 		
 		
 		do {
-			System.out.println("Bem-Vindo ao Gerenciamento de Lojas Veiculares. "
+			System.out.println("Bem-Vindo ao Gerenciamento de Lojas Veiculares. \n"
 					+ "\n Escolha uma das opções abaixo: "
 					+ "\n *1- FRENTE DA LOJA. "
 					+ "\n *2- MANUTENÇÃO DE CADASTROS. "
@@ -19,7 +21,7 @@ public class MenuPrincipal {
 			
 			Scanner scan = new Scanner(System.in);
 			
-			opcaoEscolhida = scan.nextInt();
+			opcaoEscolhida = Validadores.validadorDeMenu();
 			
 			switch(opcaoEscolhida) {
 				case 1:
@@ -30,10 +32,15 @@ public class MenuPrincipal {
 					ui.manutencaoCadastro();
 					break;
 				
-				default:
+				case 3:
 					System.out.println("\n Até logo!");
+					menuAtivo = false;
 					scan.close();
 					menuAtivo = false;
+					break;
+				default:
+					System.out.println("Opção inválida \n");
+					break;
 			}
 		}while(menuAtivo == true);
 		

@@ -83,7 +83,7 @@ public class LojaUtils {
 
 	public static boolean validaTexto(String texto) {
 		
-		if (texto.length() <= 50 && texto.matches("[a-zA-Z\\s]+") == true){
+		if (texto.length() <= 50 && texto.matches("[a^-zA-Z\\s]+") == true){
 			return true;
 //			for (int i = 0; i < texto.length(); i++) {
 //	            // Verifica se o caractere específico

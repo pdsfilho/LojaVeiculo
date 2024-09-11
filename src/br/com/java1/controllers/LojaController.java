@@ -7,6 +7,7 @@ import java.util.Scanner;
 
 import br.com.java1.models.Endereco;
 import br.com.java1.models.Loja;
+import br.com.java1.utils.Formatadores;
 import br.com.java1.utils.LojaUtils;
 
 public class LojaController {
@@ -177,11 +178,11 @@ public class LojaController {
 			if (id == l.getId()) {
 				System.out.println("\n ID DA LOJA: " + l.getId());
 				System.out.println("\n NOME DA LOJA: " +l.getNome());
-				System.out.println("\n TELEFONE: " + l.getTelefone());
+				System.out.println("\n TELEFONE: " + Formatadores.formatarTelefone(l.getTelefone()));
 				System.out.println("\n PAÍS: "+ l.getEndereco().getPais());
 				System.out.println("\n ESTADO: "+ l.getEndereco().getEstado());
 				System.out.println("\n CIDADE: " + l.getEndereco().getCidade());
-				System.out.println("\n CEP DA LOJA: " + l.getEndereco().getCep());
+				System.out.println("\n CEP DA LOJA: " + Formatadores.formatarCEP(l.getEndereco().getCep()));
 				System.out.println("\n BAIRRO: " + l.getEndereco().getBairro());
 				System.out.println("\n RUA: " + l.getEndereco().getRua());
 				System.out.println("\n NÚMERO: " + l.getEndereco().getNumero());;
